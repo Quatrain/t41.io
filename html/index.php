@@ -32,8 +32,8 @@ Maell::sendNoCacheHeaders();
 Maell::init();
 Maell::$lang = 'en';
 
-require 'application/library/Demo.php';
-require 'application/library/Demo/Exception.php';
+require 'application/library/IO.php';
+require 'application/library/IO/Exception.php';
 
 /* STEP 3: route request */
 $fcontroller = \Zend_Controller_Front::getInstance();
