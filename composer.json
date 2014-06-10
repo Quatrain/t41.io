@@ -5,6 +5,9 @@
     "maellio/maell" : "dev-master"
   },
   "repositories" : [ {
+    "type" : "git",
+    "url" : "https://bitbucket.org/maellio/maell"
+  }, {
     "type" : "composer",
     "url" : "https://packagist.org/"
   } ]
