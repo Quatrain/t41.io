@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<backends default="mongo">
+    	<backend alias="mongo">
+			<uri>
+				<adapter>mongoDB</adapter>
+				<host>localhost</host>
+                <url>t41_io</url>
+           </uri>
+		</backend>
+	</backends>
+</config>

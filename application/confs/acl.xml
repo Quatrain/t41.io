@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<acl>
+		<method>whitelist</method>
+		<roles>
+			<role id="root" type="role">
+				<label>Administrateur</label>
+			</role>
+		</roles>
+	</acl>
+</config>

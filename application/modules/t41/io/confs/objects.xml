@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<objects>
+		<object id="IO\Fantoir\Voie">
+			<label>Voie</label>
+			<properties>
+				<property id="label" type="string">
+					<label>Nom</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="dept" type="string">
+					<label>Département</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="commune" type="string">
+					<label>Commune</label>
+				</property>
+				<property id="code" type="string">
+					<label>Code</label>
+				</property>
+				<property id="cle" type="string">
+					<label>Clé</label>
+				</property>
+			</properties>
+		</object>
+	</objects>
+</config>

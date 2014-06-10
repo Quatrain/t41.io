@@ -1,0 +1,11 @@
+{
+  "name" : "t41.io",
+  "version" : "0.1.0",
+  "require" : {
+    "maellio/maell" : ">=0.9.0"
+  },
+  "repositories" : [ {
+    "type" : "composer",
+    "url" : "https://packagist.org/"
+  } ]
+}

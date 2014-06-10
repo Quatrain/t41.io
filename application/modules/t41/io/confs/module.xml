@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<module id="io" vendor="t41">
+			<version>0.1.0</version>
+			<enabled>true</enabled>
+			<label>A simple demo module to manage basic invoices</label>
+			<description>Module permettant la gestion des villes</description>
+			<namespace>IO\Fantoir</namespace>
+			<parameters>
+				<parameter id="test" type="string">
+					<defaultvalue>toto</defaultvalue>
+				</parameter>
+				<parameter id="offset" type="integer">
+					<defaultvalue>0</defaultvalue>
+				</parameter>
+			</parameters>
+			<controller>
+				<base>invoices</base>
+				<label>Invoices</label>
+				<help></help>
+				<items>
+					<item id="applications">
+						<label>Applications</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="application/consultation">
+								<label>Consulter une application</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="application/creation">
+								<label>Nouvelle application</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="version/consultation">
+								<label>Consulter une version</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="version/creation">
+								<label>Nouvelle version</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+					<item id="modules">
+						<label>Modules</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="module/consultation">
+								<label>Gestion des modules</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="module/creation">
+								<label>Nouveau module</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+					<item id="screens">
+						<label>Ecrans</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="screen/consultation">
+								<label>Gestion des écrans</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="screen/creation">
+								<label>Nouvel écran</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+					<item id="objects">
+						<label>Objets</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="objet/consultation">
+								<label>Gestion des objets</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="objet/creation">
+								<label>Nouvel objet</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+					<item id="parameters">
+						<label>Paramètres</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="parametre/consultation">
+								<label>Gestion des paramètres</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="parametre/creation">
+								<label>Nouveau parametre</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+					<item id="howtos">
+						<label>Documentation</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="node/visualisation">
+								<label>Visualisation à partir d'un noeud</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="node/consultation">
+								<label>Gestion des noeuds</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="node/creation">
+								<label>Nouveau noeud</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="howto/consultation">
+								<label>Gestion des howtos</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="howto/creation">
+								<label>Nouvel howto</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+				</items>
+			</controller>
+		</module>
+	</modules>
+</config>

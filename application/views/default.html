@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="%env:lang%">
+	<head>
+		<title>%env:page.title%</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link href="/css/reset.css" rel="stylesheet" type="text/css" />
+		%components:css%
+		<link href="/css/maell.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body class="cuerto">
+		
+		<!-- TOP - En-tête (Logo, Menu, Bloc utilisateur) - Sous-menu - Dossier -->
+		<div id="template-top">
+
+			<!-- En-tête -->
+			<div id="header">
+
+				<!-- Menu principal -->
+				<div id="menu">
+					%container:menu%
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<!-- SOUS-MENU : Fil d'Ariane et boutons d'Interface et d'Aide -->
+			<div id="sous-menu">
+				%container:breadcrumb%
+				%container:display%
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!-- CONTENU de la page (blocs) -->
+		<div id="content">
+
+			<!-- CONTENEUR de taille 1/3 -->
+			<div class="conteneur-size1" id="left">
+				%container:left%
+				%container:right%
+
+				<div class="clear"></div>
+			</div>
+			<!-- FIN du CONTENEUR de taille 1/3 -->
+			
+
+			<!-- CONTENEUR de taille 2/3 -->
+			<div class="conteneur-size2" id="default">
+				%container:default%
+				
+			</div>
+		</div>
+		<!-- FIN du CONTENEUR de taille 2/3 -->
+		
+		<!-- FOOTER -->
+		<div id="bottom">
+		
+		<p class="left">%env:app.name% %env:app.version% %env:app.env% - <strong>%env:annee.courante%</strong> %env:annee.future%</p>
+		%container:absfooter%
+			%container:footer%
+			<ul class="right">
+			%container:footerbuttons%
+			</ul>
+		</div>
+	%components:js%
+	</body>
+</html>

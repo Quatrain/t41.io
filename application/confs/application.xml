@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<application>
+			<name>t41.io</name>
+			<version>
+				<major>0</major>
+				<minor>1</minor>
+				<revision>0</revision>
+			</version>
+			<versions default="fr">
+				<version id="fr">
+					<language>fr</language>
+					<locale>fr_FR</locale>
+					<currency>EUR</currency>
+					<timezone>Europe/Paris</timezone>
+				</version>
+			</versions>
+			<environments default="dev" mode="hostname">
+				<environment id="dev">
+					<hostname>
+						<hostname id="1">io.dev.gnax</hostname>
+					</hostname>
+					<lazy>false</lazy>
+					<debug>true</debug>
+					<log>true</log>
+					<cli>true</cli>
+					<cache_backend>File</cache_backend>
+					<cache_configs>false</cache_configs>
+					<cache_objects>false</cache_objects>
+					<cache_datasets>false</cache_datasets>
+					<php>
+						<error_reporting>E_ALL</error_reporting>
+					</php>
+				</environment>
+				<environment id="stage">
+					<hostname>cs-stage.t41.io</hostname>
+					<lazy>false</lazy>
+					<debug>true</debug>
+					<log>all</log>
+					<cli>true</cli>
+					<cache_backend>Apc</cache_backend>
+					<cache_configs>false</cache_configs>
+					<cache_objects>true</cache_objects>
+					<cache_datasets>true</cache_datasets>
+					<php>
+						<error_reporting>E_ALL</error_reporting>
+					</php>
+					<keys/>
+				</environment>
+				<environment id="prod">
+					<hostname>t41.io</hostname>
+					<lazy>false</lazy>
+					<debug>true</debug>
+					<log>all</log>
+					<cli>true</cli>
+					<cache_backend>File</cache_backend>
+					<cache_configs>true</cache_configs>
+					<cache_objects>true</cache_objects>
+					<cache_datasets>true</cache_datasets>
+					<php>
+						<error_reporting>E_ERROR</error_reporting>
+					</php>
+					<keys/>
+			</environment>
+		</environments>
+	</application>
+</config>
