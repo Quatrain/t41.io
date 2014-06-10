@@ -30,7 +30,7 @@ Maell::sendNoCacheHeaders();
 
 /* STEP 2: load application configuration and modules */ 
 Maell::init();
-Maell::$lang = 'en';
+Maell::$lang = 'fr';
 
 require 'application/library/IO.php';
 require 'application/library/IO/Exception.php';
@@ -50,7 +50,7 @@ $fcontroller->setControllerDirectory($_routes);
 
 try {
 	$fcontroller->dispatch();
-} catch (\Demo\Exception $e) {
+} catch (\IO\Exception $e) {
 	displayException($e);
 } catch (\Exception $e) {
 	displayException($e, "Erreur Système");
