@@ -3,7 +3,7 @@
 	<backends default="mongo">
     	<backend alias="mongo">
 			<uri>
-				<adapter>mongoDB</adapter>
+				<adapter>mongo</adapter>
 				<host>127.0.0.1</host>
                 <url>fantoir</url>
                 <port>27018</port>
