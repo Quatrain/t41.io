@@ -20,7 +20,7 @@ ini_set('display_errors', true);
 require_once '../vendor/autoload.php';
 
 /* STEP 1: detect and load core components (t41 + zf) */
-require_once '../vendor/maellio/Maell/library/Maell.php';
+require_once '../vendor/maellio/Maell/library/maell.php';
 Maell::setIncludePaths(substr(dirname(__FILE__), 0, strrpos(dirname(__FILE__), '/')+1), true);
 Maell::enableAutoloader(array('Maell' => substr(dirname(__FILE__), 0, strrpos(dirname(__FILE__), '/')+1) . 'application/library'
 							,'Zend_' => Maell::$basePath . 'vendor/zendframework/zendframework1/library')
