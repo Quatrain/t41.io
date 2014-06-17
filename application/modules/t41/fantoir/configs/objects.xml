@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<objects>
-		<object id="IO\Fantoir\Voie">
+		<object id="IO\Fantoir\Voie" backend="mongo">
 			<label>Voie</label>
 			<properties>
-				<property id="label" type="string">
+				<property id="libvoie" type="string">
 					<label>Nom</label>
 					<constraints>
 						<mandatory/>
 						<protected/>
 					</constraints>
 				</property>
-				<property id="dept" type="string">
+				<property id="cdep" type="string">
 					<label>Département</label>
 					<constraints>
 						<mandatory/>
 						<protected/>
 					</constraints>
 				</property>
-				<property id="commune" type="string">
+				<property id="ccom" type="string">
 					<label>Commune</label>
 				</property>
-				<property id="code" type="string">
-					<label>Code</label>
+				<property id="cnatvoie" type="string">
+					<label>Nature</label>
 				</property>
-				<property id="cle" type="string">
-					<label>Clé</label>
+				<property id="cleriv" type="string">
+					<label>Clé Rivoli</label>
 				</property>
 			</properties>
 		</object>

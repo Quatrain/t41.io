@@ -5,7 +5,7 @@
 			<uri>
 				<adapter>mongoDB</adapter>
 				<host>localhost</host>
-                <url>t41_io</url>
+                <url>fantoir</url>
            </uri>
 		</backend>
 	</backends>

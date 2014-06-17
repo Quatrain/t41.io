@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<modules>
-		<module id="io" vendor="t41">
+		<module id="fantoir" vendor="t41">
 			<version>0.1.0</version>
 			<enabled>true</enabled>
 			<label>A simple demo module to manage basic invoices</label>
@@ -16,10 +16,20 @@
 				</parameter>
 			</parameters>
 			<controller>
-				<base>invoices</base>
-				<label>Invoices</label>
+				<base>fantoir</base>
+				<label>Fantoir</label>
 				<help></help>
 				<items>
+					<item id="fantoir">
+						<label>Voies</label>
+						<nolink/>
+						<items>
+							<item id="voie/index">
+								<label>Consulter les voies</label>
+							</item>
+						</items>
+					</item>
+					<!--
 					<item id="applications">
 						<label>Applications</label>
 						<nolink/>
@@ -222,6 +232,7 @@
 							</item>
 						</items>
 					</item>
+-->
 				</items>
 			</controller>
 		</module>
