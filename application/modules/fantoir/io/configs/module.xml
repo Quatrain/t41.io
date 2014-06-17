@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<module id="io" vendor="fantoir">
+			<version>0.1.0</version>
+			<enabled>true</enabled>
+			<label>A simple demo module to manage basic invoices</label>
+			<description>Module permettant la gestion des villes</description>
+			<namespace>IO\Fantoir</namespace>
+			<controller>
+				<base>io</base>
+				<label>Fantoir</label>
+				<help></help>
+				<items>
+					<item id="io">
+						<label>IO</label>
+						<nolink/>
+						<acl>
+							<admin/>
+							<user/>
+							<marketing/>
+						</acl>
+						<items>
+							<item id="rest/index">
+								<label>Test Fantoir</label>
+							</item>
+							<item id="application/creation">
+								<label>Nouvelle application</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="version/consultation">
+								<label>Consulter une version</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+							<item id="version/creation">
+								<label>Nouvelle version</label>
+								<acl>
+									<admin/>
+									<user/>
+									<marketing/>
+								</acl>
+							</item>
+						</items>
+					</item>
+				</items>
+			</controller>
+		</module>
+	</modules>
+</config>

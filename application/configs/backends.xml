@@ -4,9 +4,11 @@
     	<backend alias="mongo">
 			<uri>
 				<adapter>mongoDB</adapter>
-				<host>localhost</host>
-                <url>t41_io</url>
+				<host>127.0.0.1</host>
+                <url>fantoir</url>
+                <port>27018</port>
            </uri>
+           <mapper>mongo</mapper>
 		</backend>
 	</backends>
 </config>

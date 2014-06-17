@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<objects>
+		<object id="IO\Fantoir\Voie" backend="mongo">
+			<label>Voie</label>
+			<properties>
+				<property id="libvoie" type="string">
+					<label>Nom</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="cdep" type="string">
+					<label>Département</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="ccom" type="string">
+					<label>Commune</label>
+				</property>
+				<property id="idvoie" type="string">
+					<label>Code</label>
+				</property>
+				<property id="cleriv" type="string">
+					<label>Clé</label>
+				</property>
+			</properties>
+		</object>
+	</objects>
+</config>
