@@ -24,8 +24,8 @@ class IO_RestController extends LoggedController {
 		$search->setDecorator('search')->register();
 		
 		$co = new Collection('IO\Fantoir\Voie');
-		//$co->having('cdep')->equals('84');
-		//$co->having('ccom')->equals('007');
+		$co->having('cdep')->equals('84');
+		$co->having('ccom')->equals('007');
 		
 		$list = new ListComponent($co);
 		$list->setTitle("Extrait Mongo")->register();
