@@ -2,8 +2,27 @@
 <config>
         <mappers>     
                 <mapper id="mongo" type="backend">
-                        <object id="IO\Fantoir\Voie" datastore="fantoir">
-							<map/>
+                        <object id="IO\Fantoir\Voie" datastore="voies">
+							<map>
+								<property id="type">
+									<datastorename>cnatvoie</datastorename>
+								</property>
+								<property id="label">
+									<datastorename>libvoie</datastorename>
+								</property>
+								<property id="departement">
+									<datastorename>cdep</datastorename>
+								</property>
+								<property id="commune">
+									<datastorename>ccom</datastorename>
+								</property>
+								<property id="code">
+									<datastorename>idvoie</datastorename>
+								</property>
+								<property id="cle">
+									<datastorename>cleriv</datastorename>
+								</property>
+							</map>
                         </object>
                 </mapper>               
         </mappers>

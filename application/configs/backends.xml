@@ -4,9 +4,12 @@
     	<backend alias="mongo">
 			<uri>
 				<adapter>mongo</adapter>
-				<host>127.0.0.1</host>
+				<host>shard0.mdb.sbg.quatrain.fr</host>
                 <url>fantoir</url>
                 <port>27018</port>
+                <params>
+                	<param id="replicaSet">qt0</param>
+                </params>
            </uri>
            <mapper>mongo</mapper>
 		</backend>
