@@ -52,6 +52,8 @@
 					</item>
 				</items>
 			</controller>
+			<parameters>
+			</parameters>
 		</module>
 	</modules>
 </config>
