@@ -3,9 +3,9 @@
 	<application>
 			<name>t41.io</name>
 			<version>
-				<major>0</major>
-				<minor>1</minor>
-				<revision>0</revision>
+				<major>1</major>
+				<minor>0</minor>
+				<revision>0ß1</revision>
 			</version>
 			<versions default="fr">
 				<version id="fr">
@@ -33,13 +33,13 @@
 					</php>
 				</environment>
 				<environment id="stage">
-					<hostname>cs-stage.t41.io</hostname>
+					<hostname>beta.t41.io</hostname>
 					<lazy>false</lazy>
 					<debug>true</debug>
 					<log>all</log>
 					<cli>true</cli>
-					<cache_backend>Apc</cache_backend>
-					<cache_configs>false</cache_configs>
+					<cache_backend>File</cache_backend>
+					<cache_configs>true</cache_configs>
 					<cache_objects>true</cache_objects>
 					<cache_datasets>true</cache_datasets>
 					<php>
