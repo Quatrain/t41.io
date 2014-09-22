@@ -8,8 +8,8 @@ define('FANTOIR', '/mnt/hgfs/Téléchargements/fantoir/');
 define('EXT', '*.txt');
 
 define('MYSQLHOST', '127.0.0.1');
-define('MYSQLLOGIN', 'root');
-define('MYSQLPASSWD', 'aek188bm');
+define('MYSQLLOGIN', 'saiku');
+define('MYSQLPASSWD', 'saiku');
 define('MYSQLDATABASE', 'cime_italic2');
 
 //MongoLog::setModule( MongoLog::ALL );
