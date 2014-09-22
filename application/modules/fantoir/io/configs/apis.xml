@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<apis>
+		<api id="communes">
+			<enabled>true</enabled>
+			<apiversion>v1</apiversion>
+			<label>Query cities information of a given country</label>
+			<description>
+			<![CDATA[Provide a country code and a query of two or more letters and get the list of the existing cities in the matching country.
+Get your API token at http://t41.io/register.]]></description>
+			<object>IO\Fantoir\Commune</object>
+			<crud>
+				<create>
+					<none/>
+				</create>
+				<read>
+					<all/>
+				</read>
+				<update>
+					<none/>
+				</update>
+				<delete>
+					<none/>
+				</delete>
+			</crud>
+			<parameters>
+<!-- 			<parameter id="country">
+					<type>string</type>
+					<property>country</property>
+					<defaultvalue>FR</defaultvalue>
+				</parameter> -->
+				<parameter id="query">
+					<type>string</type>
+					<property>label</property>
+					<mandatory/>
+					<searchmode>contains</searchmode>
+				</parameter>
+			</parameters>
+			<properties>
+				<property id="label"/>
+				<property id="codepostal"/>
+				<property id="departement"/>
+			</properties>
+			<extproperties>
+				<property id="creation"/>
+				<property id="suppression"/>
+			</extproperties>
+			<sortings>
+				<label>ASC</label>
+			</sortings>
+			<key>insee</key>
+		</api>
+		<api id="voies">
+			<enabled>true</enabled>
+			<apiversion>v1</apiversion>
+			<label>Query streets of a given city</label>
+			<description></description>
+			<object>IO\Fantoir\Voie</object>
+			<crud>
+				<create>
+					<none/>
+				</create>
+				<read>
+					<all/>
+				</read>
+				<update>
+					<none/>
+				</update>
+				<delete>
+					<none/>
+				</delete>
+			</crud>
+			<parameters>
+				<parameter id="country">
+					<type>string</type>
+					<property>insee</property>
+					<mandatory/>
+				</parameter>
+				<parameter id="city">
+					<type>string</type>
+					<ppoperty>insee</ppoperty>
+					<mandatory/>
+				</parameter>
+				<parameter id="query">
+					<type>string</type>
+					<mandatory/>
+					<searchmode>beginswith</searchmode>
+				</parameter>
+			</parameters>
+		</api>
+	</apis>
+</config>

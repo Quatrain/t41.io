@@ -30,6 +30,10 @@
 				<property id="suppression" type="date">
 					<label>Suppression</label>
 				</property>
+				<property id="country" type="string">
+					<label>Pays</label>
+					<defaultvalue>FR</defaultvalue>
+				</property>
 				<property id="voies" type="collection">
 					<label>Voies</label>
 					<instanceof>IO\Fantoir\Voie</instanceof>
