@@ -6,7 +6,7 @@
 			<enabled>true</enabled>
 			<label>A simple demo module to manage basic invoices</label>
 			<description>Module permettant la gestion des villes</description>
-			<namespace>IO\Fantoir</namespace>
+			<namespace>t41\IO</namespace>
 			<controller>
 				<base>io</base>
 				<label>Fantoir</label>

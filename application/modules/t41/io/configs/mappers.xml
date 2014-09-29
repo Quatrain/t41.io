@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+        <mappers>     
+                <mapper id="mongo" type="backend">
+                        <object id="t41\IO\Country" datastore="country">
+							<map/>
+                        </object>
+                        <object id="t41\IO\Plot" datastore="plot">
+							<map/>
+                        </object>
+                </mapper>               
+        </mappers>
+</config>

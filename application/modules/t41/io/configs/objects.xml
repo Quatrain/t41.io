@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<objects>
+		<object id="t41\IO\Country" backend="mongo">
+			<label>Country</label>
+			<properties>
+				<property id="code" type="string">
+					<label>Code</label>
+				</property>
+				<property id="label" type="string">
+					<label>Nom</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="continent" type="string">
+					<label>Continent</label>
+				</property>
+				<property id="capital" type="string">
+					<label>Capital</label>
+				</property>
+				<property id="population" type="string">
+					<label>Population</label>
+				</property>
+				<property id="currency" type="string">
+					<label>Currency</label>
+				</property>
+			</properties>
+		</object>
+		<object id="t41\IO\City" backend="mongo">
+			<label>Cities</label>
+			<properties>
+				<property id="label" type="string">
+					<label>Nom</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="county" type="string">
+					<label>Département</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="insee" type="string">
+					<label>Code INSEE</label>
+				</property>
+				<property id="code" type="string">
+					<label>Code Postal</label>
+				</property>
+				<property id="creation" type="date">
+					<label>Création</label>
+				</property>
+				<property id="deletion" type="date">
+					<label>Suppression</label>
+				</property>
+				<property id="country" type="object">
+					<label>Pays</label>
+					<instanceof>t41\IO\Country</instanceof>
+					<display>label</display>
+				</property>
+				<property id="roads" type="collection">
+					<label>Voies</label>
+					<instanceof>t41\IO\Road</instanceof>
+					<keyprop>_commune</keyprop>
+				</property>
+			</properties>
+		</object>
+		<object id="t41\IO\Road" backend="mongo">
+			<label>Road</label>
+			<properties>
+				<property id="type" type="string">
+					<label>Type</label>
+					<constraints>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="label" type="string">
+					<label>Nom</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="code" type="string">
+					<label>Code</label>
+				</property>
+				<property id="city" type="object">
+					<label>City</label>
+					<instanceof>t41\IO\City</instanceof>
+				</property>
+				<property id="country" type="object">
+					<label>Pays</label>
+					<instanceof>t41\IO\Country</instanceof>
+					<display>label</display>
+				</property>
+			</properties>
+		</object>
+		<object id="t41\IO\Plot" backend="mongo">
+			<label>Batiment</label>
+			<properties>
+				<property id="code" type="string">
+					<label>Code</label>
+				</property>
+				<property id="number" type="string">
+					<label>Numéro</label>
+					<constraints>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="label" type="string">
+					<label>Voie</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="road" type="object">
+					<label>Road</label>
+					<instanceof>t41\IO\Road</instanceof>
+					<constraints>
+						<mandatory/>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="city" type="object">
+					<label>City</label>
+					<instanceof>t41\IO\City</instanceof>
+				</property>
+				<property id="country" type="object">
+					<label>Pays</label>
+					<instanceof>t41\IO\Country</instanceof>
+					<display>label</display>
+				</property>
+				<property id="location" type="array">
+					<label>Location</label>
+				</property>
+				<property id="source" type="string">
+					<label>Source</label>
+				</property>
+				<property id="numberNumPart" type="integer">
+					<label>Number Numeric Part</label>
+				</property>
+				<property id="numberAlphaPart" type="string">
+					<label>Number Alpha Part</label>
+				</property>
+			</properties>
+		</object>
+		
+		<object id="t41\IO\Address">
+			<properties>
+				<property id="roadnumber" type="string">
+					<label>Numéro</label>
+					<constraints>
+						<format>StreetNumber</format>
+					</constraints>
+				</property>
+				<property id="road" type="object">
+					<label>Voie</label>
+					<instanceof>Cuerto\Core\Voie</instanceof>
+					<display>type,label,commune</display>
+					<search>label</search>
+				</property>
+				<property id="complement" type="object">
+					<label>Entrée/Résidence</label>
+					<instanceof>Cuerto\Core\Voie\Complement</instanceof>
+					<display>label</display>
+					<depends>voie,numero:*</depends>
+				</property>
+				<property id="adresse1" type="string">
+					<label>Adresse 1</label>
+					<constraints>
+						<uppercase/>
+					</constraints>
+				</property>
+				<property id="adresse2" type="string">
+					<label>Adresse 2</label>
+					<constraints>
+						<uppercase/>
+					</constraints>
+				</property>
+				<property id="city" type="object">
+					<label>City</label>
+					<instanceof>t41\IO\City</instanceof>
+					<display>code,label</display>
+				</property>
+				<property id="commune2" type="string">
+					<label>Commune</label>
+					<constraints>
+						<uppercase/>
+					</constraints>
+				</property>
+				<property id="country" type="string">
+					<label>Pays</label>
+				</property>
+				<property id="creation" type="date">
+					<label>Date création</label>
+					<constraints>
+						<protected/>
+					</constraints>
+					<timepart>false</timepart>
+				</property>
+				<property id="createur" type="object">
+					<label>Créateur</label>
+					<instanceof>Cuerto\Core\Operateur</instanceof>
+					<display>nom,prenom</display>
+					<constraints>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="modification" type="date">
+					<label>Dernière modification</label>
+					<constraints>
+						<protected/>
+					</constraints>
+				</property>
+				<property id="modificateur" type="object">
+					<label>Modifié par</label>
+					<instanceof>Cuerto\Core\Operateur</instanceof>
+					<display>nom,prenom</display>
+				</property>
+			</properties>
+		</object>
+		
+	</objects>
+</config>

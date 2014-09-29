@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<apis>
+		<api id="countries">
+			<enabled>true</enabled>
+			<apiversion>v1</apiversion>
+			<label>Query countries information</label>
+			<description></description>
+			<object>t41\IO\Country</object>
+			<crud>
+				<create>
+					<none/>
+				</create>
+				<read>
+					<all/>
+				</read>
+				<update>
+					<none/>
+				</update>
+				<delete>
+					<none/>
+				</delete>
+			</crud>
+			<parameters>
+	 			<parameter id="code">
+					<type>string</type>
+					<property>code</property>
+					<searchmode>equals</searchmode>
+				</parameter>
+	 			<parameter id="continent">
+					<type>string</type>
+					<property>continent</property>
+					<searchmode>equals</searchmode>
+				</parameter>
+	 			<parameter id="currency">
+					<type>string</type>
+					<property>currency</property>
+					<searchmode>equals</searchmode>
+				</parameter>
+				<parameter id="query">
+					<type>string</type>
+					<property>label</property>
+					<searchmode>contains</searchmode>
+				</parameter>
+			</parameters>
+			<properties>
+				<property id="label"/>
+				<property id="capital"/>
+			</properties>
+			<extproperties>
+				<property id="population"/>
+				<property id="continent"/>
+				<property id="currency"/>
+			</extproperties>
+			<sortings>
+				<label>ASC</label>
+			</sortings>
+			<key>code</key>
+			<auth>
+				<parameter>token</parameter>
+				<method></method>
+			</auth>
+		</api>
+		<api id="cities">
+			<enabled>true</enabled>
+			<apiversion>v1</apiversion>
+			<label>Query cities information of a given country</label>
+			<description>
+			<![CDATA[Provide a country code and a query of two or more letters and get the list of the existing cities in the matching country.
+Get your API token at http://t41.io/register.]]></description>
+			<object>IO\Fantoir\Commune</object>
+			<crud>
+				<create>
+					<none/>
+				</create>
+				<read>
+					<all/>
+				</read>
+				<update>
+					<none/>
+				</update>
+				<delete>
+					<none/>
+				</delete>
+			</crud>
+			<parameters>
+<!-- 			<parameter id="country">
+					<type>string</type>
+					<property>country</property>
+					<defaultvalue>FR</defaultvalue>
+				</parameter> -->
+				<parameter id="query">
+					<type>string</type>
+					<property>label</property>
+					<mandatory/>
+					<searchmode>contains</searchmode>
+				</parameter>
+			</parameters>
+			<properties>
+				<property id="label"/>
+				<property id="codepostal"/>
+				<property id="departement"/>
+			</properties>
+			<extproperties>
+				<property id="creation"/>
+				<property id="suppression"/>
+			</extproperties>
+			<sortings>
+				<label>ASC</label>
+			</sortings>
+			<key>insee</key>
+		</api>
+		<api id="roads">
+			<enabled>true</enabled>
+			<apiversion>v1</apiversion>
+			<label>Query streets of a given city</label>
+			<description></description>
+			<object>t41\IO\Road</object>
+			<crud>
+				<create>
+					<none/>
+				</create>
+				<read>
+					<all/>
+				</read>
+				<update>
+					<none/>
+				</update>
+				<delete>
+					<none/>
+				</delete>
+			</crud>
+			<parameters>
+				<parameter id="country">
+					<type>string</type>
+					<property>country.code</property>
+					<mandatory/>
+				</parameter>
+				<parameter id="city">
+					<type>string</type>
+					<property>city.code</property>
+					<mandatory/>
+				</parameter>
+				<parameter id="query">
+					<type>string</type>
+					<mandatory/>
+					<searchmode>beginswith</searchmode>
+				</parameter>
+			</parameters>
+		</api>
+		<api id="plots">
+			<enabled>true</enabled>
+			<apiversion>v1</apiversion>
+			<label>Query buildings of a given street</label>
+			<description></description>
+			<object>t41\IO\Plot</object>
+			<crud>
+				<create>
+					<none/>
+				</create>
+				<read>
+					<all/>
+				</read>
+				<update>
+					<none/>
+				</update>
+				<delete>
+					<none/>
+				</delete>
+			</crud>
+			<parameters>
+ 				<parameter id="country">
+					<type>string</type>
+					<property>country[code</property>
+					<searchmode>equals</searchmode>
+				</parameter>
+				<parameter id="city">
+					<type>string</type>
+					<property>city[code</property>
+					<searchmode>equals</searchmode>
+				</parameter>
+				<parameter id="road">
+					<type>string</type>
+					<property>road[code</property>
+					<searchmode>equals</searchmode>
+					<mandatory/>
+				</parameter>
+			</parameters>
+			<properties>
+				<property id="number"/>
+				<property id="location"/>
+			</properties>
+			<extproperties>
+				<property id="label"/>
+				<property id="city"/>
+				<property id="source"/>
+			</extproperties>
+ 			<sortings>
+				<numberNumPart>ASC</numberNumPart>
+				<numberAlphaPart>ASC</numberAlphaPart>
+			</sortings>
+			<key>code</key>
+		</api>
+	</apis>
+</config>

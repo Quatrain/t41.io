@@ -5,7 +5,7 @@
 			<uri>
 				<adapter>mongo</adapter>
 				<host>127.0.0.1</host>
-                <url>fantoir</url>
+                <url>t41</url>
                 <port>27017</port>
                 <params>
                 	<param id="replicaSet">qt0</param>
