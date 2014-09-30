@@ -97,6 +97,9 @@
 					<instanceof>t41\IO\Country</instanceof>
 					<display>label</display>
 				</property>
+				<property id="source" type="string">
+					<label>Source</label>
+				</property>
 			</properties>
 		</object>
 		<object id="t41\IO\Plot" backend="mongo">

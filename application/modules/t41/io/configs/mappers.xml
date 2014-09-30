@@ -5,6 +5,15 @@
                         <object id="t41\IO\Country" datastore="country">
 							<map/>
                         </object>
+                        <object id="t41\IO\City" datastore="city">
+							<map/>
+                        </object>
+                        <object id="t41\IO\Road" datastore="road">
+							<map/>
+                        </object>
+                        <object id="t41\IO\County" datastore="county">
+							<map/>
+                        </object>
                         <object id="t41\IO\Plot" datastore="plot">
 							<map/>
                         </object>
