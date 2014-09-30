@@ -11,46 +11,6 @@
 				<base>io</base>
 				<label>Fantoir</label>
 				<help></help>
-				<items>
-					<item id="io">
-						<label>IO</label>
-						<nolink/>
-						<acl>
-							<admin/>
-							<user/>
-							<marketing/>
-						</acl>
-						<items>
-							<item id="rest/index">
-								<label>Test Fantoir</label>
-							</item>
-							<item id="application/creation">
-								<label>Nouvelle application</label>
-								<acl>
-									<admin/>
-									<user/>
-									<marketing/>
-								</acl>
-							</item>
-							<item id="version/consultation">
-								<label>Consulter une version</label>
-								<acl>
-									<admin/>
-									<user/>
-									<marketing/>
-								</acl>
-							</item>
-							<item id="version/creation">
-								<label>Nouvelle version</label>
-								<acl>
-									<admin/>
-									<user/>
-									<marketing/>
-								</acl>
-							</item>
-						</items>
-					</item>
-				</items>
 			</controller>
 			<parameters>
 			</parameters>
