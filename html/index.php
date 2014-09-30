@@ -15,7 +15,7 @@ use Maell\Controller;
  */
 
 require_once '../vendor/autoload.php';
-require_once '../vendor/maellio/Maell/library/Maell.php';
+require_once '../vendor/maellio/maell/library/Maell.php';
 
 Maell::setIncludePaths(substr(dirname(__FILE__), 0, strrpos(dirname(__FILE__), '/')+1), true);
 Maell::enableAutoloader(array('Maell' => substr(dirname(__FILE__), 0, strrpos(dirname(__FILE__), '/')+1) . 'application/library'
