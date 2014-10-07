@@ -173,28 +173,22 @@ Get your API token at http://t41.io/register.]]></description>
 								<mandatory/>
 							</constraints>
 						</parameter>
-						<parameter id="position">
+						<parameter id="location">
 							<type>string</type>
-							<target>location[coordinates</target>
+							<target>location</target>
 							<searchmode>near</searchmode>
-							<constraints>
-								<mandatory/>
-							</constraints>
 						</parameter>
 					</apiparameters>
 					<properties>
 						<number/>
 						<location/>
 						<source/>
+						<label/>
 					</properties>
 					<extproperties>
 						<label/>
 						<city/>
 					</extproperties>
- 					<sortings>
-						<numberNumPart>ASC</numberNumPart>
-						<numberAlphaPart>ASC</numberAlphaPart>
-					</sortings>
 					<datakey>code</datakey>
 				</read>
 			</methods>
