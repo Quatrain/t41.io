@@ -173,11 +173,6 @@ Get your API token at http://t41.io/register.]]></description>
 								<mandatory/>
 							</constraints>
 						</parameter>
-						<parameter id="location">
-							<type>string</type>
-							<target>location</target>
-							<searchmode>near</searchmode>
-						</parameter>
 					</apiparameters>
 					<properties>
 						<number/>
@@ -189,9 +184,65 @@ Get your API token at http://t41.io/register.]]></description>
 						<label/>
 						<city/>
 					</extproperties>
+					<sortings>
+						<label>ASC</label>
+					</sortings>
 					<datakey>code</datakey>
 				</read>
 			</methods>
 		</api>
+		
+		<api id="near" type="restful">
+			<enabled>true</enabled>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
+			<label>Query buildings of a given street</label>
+			<description></description>
+			<object>t41\IO\Plot</object>
+			<mode>crud</mode>
+			<methods>
+				<read>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>
+						<parameter id="location">
+							<type>string</type>
+							<target>location</target>
+							<searchmode>near</searchmode>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>	
+		 				<parameter id="country">
+							<type>string</type>
+							<target>country[code</target>
+						</parameter>
+						<parameter id="city">
+							<type>string</type>
+							<target>city[code</target>
+						</parameter>
+						<parameter id="road">
+							<type>string</type>
+							<target>road[code</target>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>
+					</apiparameters>
+					<properties>
+						<number/>
+						<label/>
+						<location/>
+						<source/>
+					</properties>
+					<extproperties>
+						<city/>
+					</extproperties>
+					<datakey>code</datakey>
+				</read>
+			</methods>
+		</api>
+		
 	</apis>
 </config>
