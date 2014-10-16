@@ -244,5 +244,33 @@ Get your API token at http://t41.io/register.]]></description>
 			</methods>
 		</api>
 		
+		<api id="myloc" type="restful">
+			<enabled>true</enabled>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
+			<label>Save user position</label>
+			<description></description>
+			<object>t41\IO\User\Location</object>
+			<mode>crud</mode>
+			<methods>
+				<create>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>
+						<parameter id="auto">
+							<type>array</type>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>	
+		 				<parameter id="manual">
+							<type>array</type>
+						</parameter>
+					</apiparameters>
+				</create>
+			</methods>
+		</api>
+		
 	</apis>
 </config>

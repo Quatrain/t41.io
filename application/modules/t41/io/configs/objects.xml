@@ -228,5 +228,16 @@
 			</properties>
 		</object>
 		
+		<object id="t41\IO\User\Location">
+			<properties>
+				<property id="auto" type="array">
+					<label>Auto</label>
+				</property>
+				<property id="manual" type="array">
+					<label>Manual</label>
+				</property>
+			</properties>
+		</object>
+		
 	</objects>
 </config>

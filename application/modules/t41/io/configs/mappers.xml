@@ -17,6 +17,9 @@
                         <object id="t41\IO\Plot" datastore="plot">
 							<map/>
                         </object>
+                        <object id="t41\IO\User\Location" datastore="userloc">
+							<map/>
+                        </object>
                 </mapper>               
         </mappers>
 </config>
