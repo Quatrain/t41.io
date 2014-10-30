@@ -19,6 +19,7 @@
 				<environment id="dev">
 					<hostname>
 						<hostname id="1">io.dev.gnax</hostname>
+						<hostname id="1">t41io.adrien.int</hostname>
 					</hostname>
 					<lazy>false</lazy>
 					<debug>true</debug>

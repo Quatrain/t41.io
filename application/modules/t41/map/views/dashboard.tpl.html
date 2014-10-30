@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+	<meta charset="UTF-8"/>
+
+	<title>t41.io</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
+	<meta itemprop="description" content="t41.io"/>
+
+	<link rel="icon" type="image/gif" href="img/favicon.png"/>
+	<link rel="shortcut icon" href="img/favicon.png"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:100,300,400,600' rel='stylesheet' type='text/css'>
+
+<!--  Style  -->
+	<link href="/css/dashboard.css" rel="stylesheet" type="text/css"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+	%components:js%
+	%components:css%
+</head>
+
+<body ng-app="mapocApp">
+	<div class="block odd">
+		<h1><span class="logo-titre">t41<span class="dot">.</span>io</span></h1>
+		<h3>Par <a href="http://quatrain.com" target="_blank"><img src="http://quatrain.com/images/logo-2012.png" alt="Quatrain"></a></h3>
+		<h2>Lorem <span>ipsum</span> dolor <span>sit</span> amet</h2>
+		<p>Pellentesque tortor lorem, convallis id tristique non, placerat et tortor. Curabitur sit amet facilisis elit. Aliquam dolor odio, pulvinar non sem eu, dapibus hendrerit elit. Donec pharetra arcu at convallis bibendum. Nulla facilisi. Mauris dignissim vehicula varius. Pellentesque lacinia, ipsum et ultrices feugiat, magna erat gravida ligula, a scelerisque nunc arcu vel mi.</p>
+	</div>
+
+	<div class="block even" id="cle" style="margin-bottom: 0;">
+		<button>Demander une clé</button>
+		<div>5233-5623-5623-9856</div>
+		
+	</div>
+
+	<div class="block odd" style="padding: 0; height: 500px;" ng-view>
+        
+	</div>
+	
+	<div class="block even">
+		<h2>Documentation <span>technique</span></h2>
+		<p>Pellentesque tortor lorem, convallis id tristique non, placerat et tortor. Curabitur sit amet facilisis eliquam dolor odio, pulvinar non sem eu.</p>
+		<a id="doc" href="#">Accès à la documentation <img src="/img/external.png"></a>
+	</div>
+	
+	<div class="block odd">
+		<h2>Contactez<span>-nous</span></h2>
+		<form id="contact" method="POST" action="#">
+			<input type="text" required name="nom" placeholder="Nom, Prénom *" />
+			<input type="text" required name="societe" placeholder="Organisme / Société" />
+			<input type="email" required name="mail" placeholder="E-mail *" />
+			<input type="tel" required name="phone" maxlength="10" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="" placeholder="Téléphone" />
+			<p>* Ces champs sont nécessaires à l'envoi</p>
+			<textarea name="message" required rows="4" placeholder="Votre message..."></textarea>
+			<input type="submit" value="Envoyer">
+		</form>
+	</div>
+
+	<div class="block even">
+		<h2>Licence & Sources</h2>
+		
+		<div class="limit">
+			<p id="licence">Pellentesque tortor lorem, convallis id tristique non, placerat et tortor. Curabitur sit amet facilisis elit. Aliquam dolor odio, pulvinar non sem eu, dapibus hendrerit elit. Donec pharetra arcu at convallis bibendum. Nulla facilisi. Mauris dignissim vehicula varius. Pellentesque lacinia, ipsum et ultrices feugiat, magna erat gravida ligula, a scelerisque nunc arcu vel mi.</p>
+			<ul id="sources">
+				<li><a href="http://www.openstreetmap.org/">Projet OSM</a></li>
+				<li><a href="http://openstreetmap.fr/bano">Projet BANO</a></li>
+				<li><a href="http://www.collectivites-locales.gouv.fr/mise-a-disposition-fichier-fantoir-des-voies-et-lieux-dits">Réf. Fantoir</a></li>
+				<li><a href="http://www.data.gouv.fr/">data.gouv.fr</a></li>
+				<li><a href="http://fr.wikipedia.org/wiki/Open_Database_License">Licence ODbL</a></li>
+			</ul>
+		</div>
+		<p id="footer">Ce site ainsi que l'API qu'il décrit et sa documentation sont développés et hébergés par Quatrain</p>
+	</div>
+</body>
+
+</html>

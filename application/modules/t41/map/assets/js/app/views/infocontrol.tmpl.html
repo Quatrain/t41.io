@@ -1,0 +1,6 @@
+<div class="info" ng-show="geolocated">
+	<hr />
+	<div><input type="checkbox" ng-model="submit.wifi" id="subwifi"><label for="subwifi">Wifi ON</label></div>
+	<div>Accuracy: {{ geolocated.coords.accuracy | distance }}</div>
+	<div>Offset: {{ manual_offset | distance }}</div>
+</div>

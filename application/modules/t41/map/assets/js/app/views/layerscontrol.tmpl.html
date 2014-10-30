@@ -1,0 +1,4 @@
+<hr />
+<ul id="layers">Layers
+    <li ng-repeat="layer in layers.data" ng-class="{active: layer.visible}" ng-click="hideLayer(layer.label)">{{layer.label}} <span ng-hide="layer.unique">({{layer.features.length}})</span> <span ng-show="layer.unique">(U:{{layer.features.length}})</span></li>
+</ul>

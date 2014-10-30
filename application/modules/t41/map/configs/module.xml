@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<module id="map" vendor="t41">
+			<version>0.1.0</version>
+			<enabled>true</enabled>
+			<label>A simple demo module to manage a map</label>
+			<description>Module permettant l'affichage d'une carte</description>
+			<namespace>t41\map</namespace>
+			<controller>
+				<base>map</base>
+				<label>t41</label>
+				<help></help>
+			</controller>
+			<parameters>
+			</parameters>
+		</module>
+	</modules>
+</config>
