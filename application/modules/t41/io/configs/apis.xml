@@ -1,211 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<apis>
-		<api id="countries">
+		<api id="countries" type="restful">
 			<enabled>true</enabled>
-			<apiversion>v1</apiversion>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
 			<label>Query countries information</label>
-			<description></description>
+			<description>Get information about any country</description>
 			<object>t41\IO\Country</object>
-			<crud>
-				<create>
-					<none/>
-				</create>
+			<mode>crud</mode>
+			<methods>
 				<read>
-					<all/>
+					<acl>
+						<all/>					
+					</acl> 
+					<auth>
+						<parameter>token</parameter>
+						<method></method>
+					</auth>
+					<apiparameters>
+	 					<parameter id="code">
+							<type>string</type>
+							<description>ISO-3166 Country Code (see http://www.iso.org/iso/country_codes.htm)</description>
+						</parameter>
+	 					<parameter id="continent">
+							<type>string</type>
+						</parameter>
+	 					<parameter id="currency">
+							<type>string</type>
+						</parameter>
+						<parameter id="query">
+							<type>string</type>
+							<target>label</target>
+							<searchmode>contains</searchmode>
+						</parameter>
+					</apiparameters>
+					<properties>
+						<label/>
+						<capital/>
+					</properties>
+					<extproperties>
+						<population/>
+						<continent/>
+						<currency/>
+					</extproperties>
+					<sortings>
+						<label>ASC</label>
+					</sortings>
+					<datakey>code</datakey>
 				</read>
-				<update>
-					<none/>
-				</update>
-				<delete>
-					<none/>
-				</delete>
-			</crud>
-			<parameters>
-	 			<parameter id="code">
-					<type>string</type>
-					<property>code</property>
-					<searchmode>equals</searchmode>
-				</parameter>
-	 			<parameter id="continent">
-					<type>string</type>
-					<property>continent</property>
-					<searchmode>equals</searchmode>
-				</parameter>
-	 			<parameter id="currency">
-					<type>string</type>
-					<property>currency</property>
-					<searchmode>equals</searchmode>
-				</parameter>
-				<parameter id="query">
-					<type>string</type>
-					<property>label</property>
-					<searchmode>contains</searchmode>
-				</parameter>
-			</parameters>
-			<properties>
-				<property id="label"/>
-				<property id="capital"/>
-			</properties>
-			<extproperties>
-				<property id="population"/>
-				<property id="continent"/>
-				<property id="currency"/>
-			</extproperties>
-			<sortings>
-				<label>ASC</label>
-			</sortings>
-			<key>code</key>
-			<auth>
-				<parameter>token</parameter>
-				<method></method>
-			</auth>
+			</methods>
 		</api>
-		<api id="cities">
+		<api id="cities" type="restful">
 			<enabled>true</enabled>
-			<apiversion>v1</apiversion>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
 			<label>Query cities information of a given country</label>
-			<description>
-			<![CDATA[Provide a country code and a query of two or more letters and get the list of the existing cities in the matching country.
+			<description><![CDATA[Provide a country code and a query of two or more letters and get the list of the existing cities in the matching country.
 Get your API token at http://t41.io/register.]]></description>
 			<object>t41\IO\City</object>
-			<crud>
-				<create>
-					<none/>
-				</create>
+			<mode>crud</mode>
+			<methods>
 				<read>
-					<all/>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>
+ 						<parameter id="country">
+							<type>string</type>
+							<target>country[code</target>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>	
+						<parameter id="query">
+							<type>string</type>
+							<target>label</target>
+							<searchmode>contains</searchmode>
+						</parameter>
+					</apiparameters>
+					<properties>
+						<label/>
+						<postcode/>
+						<county/>
+						<source/>
+					</properties>
+					<extproperties>
+						<fromdate/>
+						<todate/>
+					</extproperties>
+					<sortings>
+						<label>ASC</label>
+					</sortings>
+					<datakey>code</datakey>
 				</read>
-				<update>
-					<none/>
-				</update>
-				<delete>
-					<none/>
-				</delete>
-			</crud>
-			<parameters>
- 				<parameter id="country">
-					<type>string</type>
-					<property>country[code</property>
-				</parameter>	
-				<parameter id="query">
-					<type>string</type>
-					<property>label</property>
-					<searchmode>contains</searchmode>
-				</parameter>
-			</parameters>
-			<properties>
-				<property id="label"/>
-				<property id="postcode"/>
-				<property id="county"/>
-				<property id="country"/>
-			</properties>
-			<extproperties>
-				<property id="fromdate"/>
-				<property id="todate"/>
-			</extproperties>
-			<sortings>
-				<label>ASC</label>
-			</sortings>
-			<key>code</key>
+			</methods>
 		</api>
-		<api id="roads">
+		
+		<api id="roads" type="restful">
 			<enabled>true</enabled>
-			<apiversion>v1</apiversion>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
 			<label>Query streets of a given city</label>
 			<description></description>
 			<object>t41\IO\Road</object>
-			<crud>
-				<create>
-					<none/>
-				</create>
+			<mode>crud</mode>
+			<methods>
 				<read>
-					<all/>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>
+						<parameter id="country">
+							<type>string</type>
+							<target>country[code</target>
+						</parameter>
+						<parameter id="city">
+							<type>string</type>
+							<target>city[code</target>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>
+						<parameter id="code">
+							<type>string</type>
+							<target>code</target>
+						</parameter>
+						<parameter id="query">
+							<type>string</type>
+							<target>label</target>
+						</parameter>
+					</apiparameters>
+					<properties>
+						<label/>
+						<type/>
+						<source/>
+					</properties>
+					<sortings>
+						<label>ASC</label>
+					</sortings>
+					<datakey>code</datakey>
 				</read>
-				<update>
-					<none/>
-				</update>
-				<delete>
-					<none/>
-				</delete>
-			</crud>
-			<parameters>
-				<parameter id="country">
-					<type>string</type>
-					<property>country[code</property>
-				</parameter>
-				<parameter id="city">
-					<type>string</type>
-					<property>city[code</property>
-					<mandatory/>
-				</parameter>
-				<parameter id="query">
-					<type>string</type>
-					<property>label</property>
-				</parameter>
-			</parameters>
-			<properties>
-				<property id="label"/>
-				<property id="type"/>
-				<property id="source"/>
-			</properties>
-			<sortings>
-				<label>ASC</label>
-			</sortings>
-			<key>code</key>
+			</methods>
 		</api>
-		<api id="plots">
+		
+		<api id="plots" type="restful">
 			<enabled>true</enabled>
-			<apiversion>v1</apiversion>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
 			<label>Query buildings of a given street</label>
 			<description></description>
 			<object>t41\IO\Plot</object>
-			<crud>
-				<create>
-					<none/>
-				</create>
+			<mode>crud</mode>
+			<methods>
 				<read>
-					<all/>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>			
+		 				<parameter id="country">
+							<type>string</type>
+							<target>country[code</target>
+						</parameter>
+						<parameter id="city">
+							<type>string</type>
+							<target>city[code</target>
+						</parameter>
+						<parameter id="road">
+							<type>string</type>
+							<target>road[code</target>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>
+					</apiparameters>
+					<properties>
+						<number/>
+						<location/>
+						<source/>
+						<label/>
+					</properties>
+					<extproperties>
+						<label/>
+						<city/>
+					</extproperties>
+					<sortings>
+						<label>ASC</label>
+					</sortings>
+					<datakey>code</datakey>
 				</read>
-				<update>
-					<none/>
-				</update>
-				<delete>
-					<none/>
-				</delete>
-			</crud>
-			<parameters>
- 				<parameter id="country">
-					<type>string</type>
-					<property>country[code</property>
-					<searchmode>equals</searchmode>
-				</parameter>
-				<parameter id="city">
-					<type>string</type>
-					<property>city[code</property>
-					<searchmode>equals</searchmode>
-				</parameter>
-				<parameter id="road">
-					<type>string</type>
-					<property>road[code</property>
-					<searchmode>equals</searchmode>
-					<mandatory/>
-				</parameter>
-			</parameters>
-			<properties>
-				<property id="number"/>
-				<property id="location"/>
-			</properties>
-			<extproperties>
-				<property id="label"/>
-				<property id="city"/>
-				<property id="source"/>
-			</extproperties>
- 			<sortings>
-				<numberNumPart>ASC</numberNumPart>
-				<numberAlphaPart>ASC</numberAlphaPart>
-			</sortings>
-			<key>code</key>
+			</methods>
 		</api>
+		
+		<api id="near" type="restful">
+			<enabled>true</enabled>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
+			<label>Query buildings of a given street</label>
+			<description></description>
+			<object>t41\IO\Plot</object>
+			<mode>crud</mode>
+			<methods>
+				<read>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>
+						<parameter id="location">
+							<type>string</type>
+							<target>location</target>
+							<searchmode>near</searchmode>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>	
+		 				<parameter id="country">
+							<type>string</type>
+							<target>country[code</target>
+						</parameter>
+						<parameter id="city">
+							<type>string</type>
+							<target>city[code</target>
+						</parameter>
+						<parameter id="road">
+							<type>string</type>
+							<target>road[code</target>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>
+					</apiparameters>
+					<properties>
+						<number/>
+						<label/>
+						<location/>
+						<source/>
+					</properties>
+					<extproperties>
+						<city/>
+					</extproperties>
+					<datakey>code</datakey>
+				</read>
+			</methods>
+		</api>
+		
+		<api id="myloc" type="restful">
+			<enabled>true</enabled>
+			<endpoint>v1</endpoint>
+			<version>1.0.0</version>
+			<label>Save user position</label>
+			<description></description>
+			<object>t41\IO\User\Location</object>
+			<mode>crud</mode>
+			<methods>
+				<create>
+					<acl>
+						<all/>
+					</acl>
+					<apiparameters>
+						<parameter id="auto">
+							<type>array</type>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>	
+		 				<parameter id="manual">
+							<type>array</type>
+						</parameter>
+					</apiparameters>
+				</create>
+			</methods>
+		</api>
+		
 	</apis>
 </config>
