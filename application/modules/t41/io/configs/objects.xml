@@ -4,27 +4,33 @@
 		<object id="t41\IO\Country" backend="mongo">
 			<label>Country</label>
 			<properties>
-				<property id="code" type="string">
+				<property id="code" type="array">
 					<label>Code</label>
 				</property>
-				<property id="label" type="string">
+				<property id="label" type="array">
 					<label>Nom</label>
 					<constraints>
 						<mandatory/>
 						<protected/>
 					</constraints>
 				</property>
-				<property id="continent" type="string">
+				<property id="continent" type="array">
 					<label>Continent</label>
 				</property>
 				<property id="capital" type="string">
 					<label>Capital</label>
 				</property>
-				<property id="population" type="string">
+				<property id="population" type="integer">
 					<label>Population</label>
 				</property>
 				<property id="currency" type="string">
 					<label>Currency</label>
+				</property>
+				<property id="source" type="array">
+					<label>Source</label>
+				</property>
+				<property id="languages" type="array">
+					<label>Language</label>
 				</property>
 			</properties>
 		</object>
@@ -48,8 +54,14 @@
 				<property id="insee" type="string">
 					<label>Code INSEE</label>
 				</property>
-				<property id="code" type="string">
+				<property id="code" type="array">
+					<label>Code</label>
+				</property>
+				<property id="postcode" type="array">
 					<label>Code Postal</label>
+				</property>
+				<property id="source" type="array">
+					<label>Source</label>
 				</property>
 				<property id="creation" type="date">
 					<label>Création</label>
@@ -85,7 +97,7 @@
 						<protected/>
 					</constraints>
 				</property>
-				<property id="code" type="string">
+				<property id="code" type="array">
 					<label>Code</label>
 				</property>
 				<property id="city" type="object">
@@ -97,7 +109,7 @@
 					<instanceof>t41\IO\Country</instanceof>
 					<display>label</display>
 				</property>
-				<property id="source" type="string">
+				<property id="source" type="array">
 					<label>Source</label>
 				</property>
 			</properties>
@@ -105,7 +117,7 @@
 		<object id="t41\IO\Plot" backend="mongo">
 			<label>Batiment</label>
 			<properties>
-				<property id="code" type="string">
+				<property id="code" type="array">
 					<label>Code</label>
 				</property>
 				<property id="number" type="string">
@@ -141,7 +153,7 @@
 				<property id="location" type="array">
 					<label>Location</label>
 				</property>
-				<property id="source" type="string">
+				<property id="source" type="array">
 					<label>Source</label>
 				</property>
 				<property id="numberNumPart" type="integer">
@@ -235,6 +247,12 @@
 				</property>
 				<property id="manual" type="array">
 					<label>Manual</label>
+				</property>
+				<property id="ip" type="string">
+					<label>IP Address</label>
+				</property>
+				<property id="date" type="date">
+					<label>Date</label>
 				</property>
 			</properties>
 		</object>

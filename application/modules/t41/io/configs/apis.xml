@@ -36,7 +36,8 @@
 						</parameter>
 					</apiparameters>
 					<properties>
-						<label/>
+						<code.1/>
+						<label.__/>
 						<capital/>
 					</properties>
 					<extproperties>
@@ -47,7 +48,7 @@
 					<sortings>
 						<label>ASC</label>
 					</sortings>
-					<datakey>code</datakey>
+					<datakey>code.0</datakey>
 				</read>
 			</methods>
 		</api>
@@ -78,6 +79,10 @@ Get your API token at http://t41.io/register.]]></description>
 							<target>label</target>
 							<searchmode>contains</searchmode>
 						</parameter>
+						<parameter id="code">
+							<type>string</type>
+							<target>code</target>
+						</parameter>
 					</apiparameters>
 					<properties>
 						<label/>
@@ -92,7 +97,7 @@ Get your API token at http://t41.io/register.]]></description>
 					<sortings>
 						<label>ASC</label>
 					</sortings>
-					<datakey>code</datakey>
+					<datakey>code.0</datakey>
 				</read>
 			</methods>
 		</api>
@@ -129,17 +134,20 @@ Get your API token at http://t41.io/register.]]></description>
 						<parameter id="query">
 							<type>string</type>
 							<target>label</target>
+							<searchmode>contains</searchmode>
 						</parameter>
 					</apiparameters>
 					<properties>
 						<label/>
 						<type/>
+						<city.code.0/>
+						<country.code.1/>
 						<source/>
 					</properties>
 					<sortings>
 						<label>ASC</label>
 					</sortings>
-					<datakey>code</datakey>
+					<datakey>code.0</datakey>
 				</read>
 			</methods>
 		</api>
@@ -266,6 +274,13 @@ Get your API token at http://t41.io/register.]]></description>
 						</parameter>	
 		 				<parameter id="manual">
 							<type>array</type>
+							<constraints>
+								<mandatory/>
+							</constraints>
+						</parameter>
+						<parameter id="ip">
+							<type>string</type>
+							<fixedvalue>%env:ip.address%</fixedvalue>
 						</parameter>
 					</apiparameters>
 				</create>
