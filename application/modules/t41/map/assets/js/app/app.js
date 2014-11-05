@@ -11,7 +11,11 @@
 			.when('/', {
 				controller: 'mapController',
 				//templateUrl: '/maell/app/t41/map/app:views:dashboard.tmpl.html'
-				template: '<qt-map-control></qt-map-control><qt-map></qt-map>'
+				template: '<qt-map></qt-map>' //<qt-map-control></qt-map-control>
+			})
+			.when('/api', {
+				controller: 'apiController',
+				template: '<qt-api-doc></qt-api-doc>'
 			})
 			.otherwise({ redirectTo: '/' });
 	}]);

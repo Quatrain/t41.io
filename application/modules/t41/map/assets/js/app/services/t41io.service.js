@@ -3,6 +3,36 @@
     this.api = 'http://beta.t41.io/api/v1/';
     this.token = 'fa8c9c082de9d2542b993cad0d887d29205d5bd36836a064';
 
+    this.getCountries = function() {
+      var d = $q.defer();
+      $http.get('app/data/country.json').success(function(response) {
+        d.resolve(response);
+      }).error(function(error) {
+        d.reject(error);
+      });
+      return d.promise;
+    };
+
+    this.getCities = function() {
+      var d = $q.defer();
+      $http.get('app/data/city.json').success(function(response) {
+        d.resolve(response);
+      }).error(function(error) {
+        d.reject(error);
+      });
+      return d.promise;
+    };
+
+    this.getRoads = function() {
+      var d = $q.defer();
+      $http.get('app/data/avignon.json').success(function(response) {
+        d.resolve(response);
+      }).error(function(error) {
+        d.reject(error);
+      });
+      return d.promise;
+    };
+
     this.countries = function(query) {
       var query = query || {};
       var params = ['code','currency','continent','query'];

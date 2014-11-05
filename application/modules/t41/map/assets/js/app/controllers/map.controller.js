@@ -35,16 +35,16 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
         geoJSONLayers: new GeoJSONLayers(),
         layers: {
           baselayers: {
-        	  mapBox: {
+            mapBox: {
                   name: 'mapBox',
                   type: 'xyz',
                   url: 'http://{s}.tiles.mapbox.com/v3/rob-air.4c2da915/{z}/{x}/{y}.png'
               },
               openStreetMap: {
-            	  name: 'openStreetMap',
-            	  type: 'xyz',
-            	  url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-            }            
+                name: 'openStreetMap',
+                type: 'xyz',
+                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            }
           },
           overlays:{
             red:    { type: 'group', name: 'E. Maternelle', visible: true },
@@ -55,8 +55,9 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
             pink:   { type: 'group', name: 'N/C', visible: true }
           },
           data: {
-            'geolocation_browser': { label: 'geolocation_browser', visible: true, unique: true, redraw: true, features: []},
-            'geolocation_manual': { label: 'geolocation_manual', visible: true, unique: true, redraw: true, features: []}
+            'geolocation_browser': { label: 'Geolocation: Browser', id: 'geolocation_browser', visible: true, unique: true, redraw: true, features: []},
+            'geolocation_manual': { label: 'Geolocation: Manual', id: 'geolocation_manual', visible: true, unique: true, redraw: true, features: []},
+            'bounding_box': { label: 'Bounding Box', id: 'bounding_box', visible: true, unique: true, redraw: true, features: []}
           }
         }
     });
@@ -73,13 +74,14 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
 
     $scope.hideLayer = function(layer) {
       var layer = layer || $scope.currentLayer;
-      $scope.layers.data[layer].visible = !$scope.layers.data[layer].visible;
-      $scope.layers.data[layer].redraw = true;
+
+      $scope.layers.data[layer.id].visible = !$scope.layers.data[layer.id].visible;
+      $scope.layers.data[layer.id].redraw = true;
       updateLayers();
     }
 
     $scope.addShape = function(shape) {
-      var shape = shape || $scope.arrd.selected;
+      //var shape = shape || $scope.arrd.selected;
 
       if ($scope.layers.data[shape.properties.layer] && $scope.layers.data[shape.properties.layer].unique) $scope.geoJSONLayers.removeLayer(shape.properties.layer);
 
@@ -92,7 +94,6 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
       var features = [];
 
       for (var i = 0; i < shapes.length; i++) {
-        console.log(shapes[i]);
         // single point of interest
         if (shapes[i].geometry.type=="Point") {
 
@@ -114,10 +115,98 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
 
 
       if (features.length>=1) {
-        var featureCollection = new Terraformer.FeatureCollection(features);
+        var featureCollection = geoFactory.getFeatureCollection(features);
         pushAllFeatures(featureCollection);
       }
     }
+    
+    // call from outside the app scope
+    // angular.element($('qt-map')).scope().boundingBox(["-13.65","49.866667","2.866667","61.5"]);
+    $scope.boundingBox = function(bbox) {
+    	$scope.boundingbox = bbox;
+    	
+        var map = this.getMap();
+
+        map.then(function(map) {
+	        var b = $scope.boundingbox;
+	        map.fitBounds(L.latLngBounds([b[1], b[0]], [b[3], b[2]]));
+	        //$scope.drawBox($scope.boundingbox);
+        });
+    };
+
+    $scope.boundToBbox = function(bbox) {
+      if (bbox) $scope.bbox = bbox;
+      var map = this.getMap();
+      console.log($scope.bbox);
+      map.then(function(map) {
+        map.fitBounds($scope.bbox);
+        $scope.$apply();
+      });
+      
+    };
+
+    $scope.boundToCity = function() {
+      var map = this.getMap();
+
+      map.then(function(map) {
+        map.panTo($scope.selectedCity.location.coordinates);
+        map.setZoom(calcZoomFromPopulation($scope.selectedCity.population));
+
+        if ($scope.selectedCity.bbox) {
+          $scope.drawBox($scope.selectedCity.bbox);
+        }
+      });
+    };
+
+    $scope.boundToCountry = function() {
+      var map = this.getMap();
+
+      map.then(function(map) {
+        if ($scope.selectedCountry.bbox) {
+          var b = $scope.selectedCountry.bbox;
+          map.fitBounds(L.latLngBounds([b[1], b[0]], [b[3], b[2]]));
+
+          $scope.drawBox($scope.selectedCountry.bbox);
+        }
+      });
+    };
+
+    $scope.boundToRoad = function() {
+      var map = this.getMap();
+
+      map.then(function(map) {
+        if ($scope.selectedRoad.bbox) {
+          var b = $scope.selectedRoad.bbox;
+          map.fitBounds(L.latLngBounds([b[1], b[0]], [b[3], b[2]]));
+
+          $scope.drawBox($scope.selectedRoad.bbox);
+        }
+      });
+    };
+
+    $scope.saveBbox = function() {
+      var map = this.getMap();
+
+      map.then(function(map) {
+        $scope.bbox = map.getBounds();
+        console.log($scope.bbox);
+      });
+    };
+
+    $scope.drawBox = function(b) {
+      var properties = {
+        layer: 'bounding_box',
+        class: 'boundary',
+        type: 'box',
+        osm_type: 'polygon'
+      };
+
+      var coordinates = [[ [b[0], b[3]], [b[2], b[3]], [b[2], b[1]], [b[0], b[1]], [b[0], b[3]] ]];
+
+      var s = geoFactory.getFeature('Polygon', coordinates, properties);
+
+      $scope.addShape(s);
+    };
 
     $scope.drawCircle = function(opt) {
       var properties = {
@@ -271,6 +360,30 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
       console.log(t41io.saveMyGeoloc(data));
     };
 
+    $scope.getCountries = function() {
+      var promise = t41io.getCountries();
+      promise.then(function(data){
+        $scope.countries = data;
+      });
+    };
+    //$scope.getCountries();
+
+    $scope.getCities = function() {
+      var promise = t41io.getCities();
+      promise.then(function(data){
+        $scope.cities = data;
+      });
+    };
+    //$scope.getCities();
+
+    $scope.getRoads = function() {
+      var promise = t41io.getRoads();
+      promise.then(function(data){
+        $scope.roads = data;
+      });
+    };
+    //$scope.getRoads();
+
     $scope.bano_radius = function(params) {
         if ($scope.getMarker('manualpos')===false) {
             var point = $scope.getMarker('geolocated');
@@ -338,6 +451,16 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
       if (accuracy<=10000) return 500;
       return 1000;
     };
+
+    function calcZoomFromPopulation(pop) {
+      if (pop<=5000) return 16;
+      if (pop<=25000) return 15;
+      if (pop<=50000) return 14;
+      if (pop<=100000) return 13;
+      if (pop<=250000) return 15;
+      if (pop<=500000) return 14;
+      return 13;
+    }
 
     function newMarker(shape) {
       var icon = geoFactory.getIcon(shape.properties.class);

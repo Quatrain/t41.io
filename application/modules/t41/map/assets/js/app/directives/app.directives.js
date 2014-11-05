@@ -69,4 +69,16 @@ var qtInfoControl = function() {
 };
 angular.module('mapocDirectives').directive('qtInfoControl', qtInfoControl);
 
+
+
+var qtApiDoc = function() {
+	return {
+		restrict: 'E',
+		template: '<h2>Documentation</h2><div ng-repeat="(key, api) in apiconfig"><h3>/{{api.endpoint}}/{{key}}</h3><span>{{api.description}}</span></div>'
+	};
+};
+angular.module('mapocDirectives').directive('qtApiDoc', qtApiDoc);
+
+
+
 }());
