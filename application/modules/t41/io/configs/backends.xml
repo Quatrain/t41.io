@@ -7,9 +7,9 @@
 				<host>127.0.0.1</host>
                 <url>t41</url>
                 <port>27017</port>
-                <params>
+<!--                 <params>
                 	<param id="replicaSet">qt0</param>
-                </params>
+                </params> -->
            </uri>
            <mapper>mongo</mapper>
 		</backend>
