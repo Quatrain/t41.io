@@ -248,14 +248,14 @@ Get your API token at http://t41.io/register.]]></description>
 					</apiparameters>
 					<properties>
 						<number/>
-						<label/>
-						<location/>
 						<source/>
 					</properties>
 					<extproperties>
+						<label/>
+						<location/>
 						<city/>
 					</extproperties>
-					<datakey>code</datakey>
+					<datakey>code.0</datakey>
 				</read>
 			</methods>
 		</api>
