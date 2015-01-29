@@ -127,6 +127,7 @@ foreach (glob(BANO . EXT) as $filename) {
         $i++; $t++; $y++;
     }
 
+    mail('support@quatrain.com', "Fin d'import du " . $dept, $t . " points créés");
     fclose($handle);
 
 
