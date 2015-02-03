@@ -1,20 +1,32 @@
 #!/usr/bin/php
 <?php
 $start = microtime(true);
-define('RN', "\r\n");
-define('MONGO', 'mongodb://127.0.0.1');
-//$MONGOPT = array('replicaSet'=>'qt0');
-define('FANTOIR', '/mnt/hgfs/Téléchargements/fantoir/');
+
+require 'config.inc.php';
+
+define('FOLDER', '20140721');
+define('FANTOIR', DATADIR . 'fantoir/' . FOLDER . '/');
 define('EXT', '*.txt');
 
-define('MYSQLHOST', '127.0.0.1');
-define('MYSQLLOGIN', 'saiku');
-define('MYSQLPASSWD', 'saiku');
-define('MYSQLDATABASE', 'cime_italic2');
-
-//MongoLog::setModule( MongoLog::ALL );
-//MongoLog::setLevel( MongoLog::ALL );
-MongoCursor::$timeout = -1;
+$fh = fopen(DATADIR  . 'communes-plus-20140630.csv','r');
+$geo = [];
+while (($data = fgetcsv($fh, 1000, ";")) !== FALSE) {
+	/**
+		[0] => insee
+		[1] => nom
+		[2] => wikipedia
+		[3] => surf_m2
+		[4] => lat_centro
+		[5] => lon_centro
+		[6] => statut
+		[7] => x_chf_lieu
+		[8] => y_chf_lieu
+		[9] => z_moyen
+		[10] => population
+		+ code_cant;code_arr;code_dept;nom_dept;code_reg;nom_region
+	 */
+	$geo[(string) str_pad($data[0], 5, "0")] = $data;
+}
 
 $zones = array(
         'cdep' => array("Code Département", 0, 2, '', FALSE), //
@@ -22,9 +34,9 @@ $zones = array(
         'ccom' => array("Code Commune", 3, 3, '', FALSE), //
         'idvoie' => array("Identifiant Voie", 6, 4, '', TRUE), // CHAR 4
         'cleriv' => array("Clé RIVOLI", 10, 1, '', TRUE), // CHAR 1
-        'cnatvoie' => array("Code Nature Voie", 11, 4, '', TRUE),
-        'libvoie' => array("Libellé Voie", 15, 26, '', TRUE), // VARCHAR 26
-        'typcom' => array("Type Commune", 42, 1, '', FALSE), // CHAR 1
+        'type' => array("Code Nature Voie", 11, 4, '', TRUE),
+        'label' => array("Libellé Voie", 15, 26, '', TRUE), // VARCHAR 26
+//        'typcom' => array("Type Commune", 42, 1, '', FALSE), // CHAR 1
 //        'caracrur' => array("Caractère RUR", 45, 1, 'int', FALSE), // INT
 //        'caracvoie' => array("Caractère Voie", 48, 1, 'bool', FALSE), // BOOL
 //        'caracpop' => array("Caractère Population", 49, 1, 'bool', FALSE), // BOOL
@@ -34,36 +46,36 @@ $zones = array(
 //        'dateann' => array("Date d'Annulation", 74, 7, '', FALSE), // ??? 0000000
 //        'datecrea' => array("Date Création", 81, 7, 'int', FALSE), // date sur 7 caractères YYYYzzz
 //        'cidmajic' => array("Code Identifiant MAJIC", 103, 5, '', FALSE), // CHAR
-        'typvoie' => array("Type Voie", 108, 1, 'int', TRUE), // INT
+//        'type' => array("Type Voie", 108, 1, 'int', TRUE), // INT
 //        'caracld' => array("Caractère Lieu-dit", 109, 1, 'bool', FALSE), // BOOL ?
-        'dermalph' => array("Dernier Mot du Libellé de la Voie", 112, 8, '', FALSE) // CHAR 8
+       'dermalph' => array("Dernier Mot du Libellé de la Voie", 112, 8, '', FALSE) // CHAR 8
 );
 
 
 $filtre = array();
 
 foreach ($zones as $k => $v) {
-    if ($v[4]===FALSE) $filtre[$k] = 0;
+    if ($v[4] === FALSE) $filtre[$k] = 0;
 }
 
 $communes = getCities();
 
-$y=0;
-foreach (glob(FANTOIR.EXT) as $filename) {
+$y = 0;
+
+// Lecture de tous les fichiers respectant le pattern
+foreach (glob(FANTOIR . EXT) as $filename) {
     $villes = $villes2 = array();
     $substart = microtime(true);
 
     // ouverture du fichier fantoir en lecture seule
     $handle = fopen($filename,'r');
-    if ($handle===FALSE) {
-            echo RN.'erreur de lecture du fichier'.RN;
-            exit();
+    if ($handle === FALSE) {
+		exit(RN . 'erreur de lecture du fichier' . RN);
     }
 
     echo RN.'Reading file '.basename($filename);
 
-    $i=0;
-    $t=0;
+    $i = $t = 0;
 
     while (($line = fgets($handle)) != FALSE) {
 
@@ -95,10 +107,9 @@ foreach (glob(FANTOIR.EXT) as $filename) {
         }
 
         // on prépare une clé composite pour la voie
-     //   $voie['_id'] = new MongoId();
-        $voie['id'] = $voie['cdep'] . $voie['ccom'] . $voie['idvoie'] . $voie['cleriv'];
+        $partialcode = $voie['cdep'] . $voie['ccom'] . $voie['idvoie'] . $voie['cleriv'];
+        $voie['code'] = ['FR' . $partialcode];
         $ville_id = checkVille($voie);
-        $voie['commune'] = $ville_id;
 
         // suppression des colonnes qui se rapportent à la ville (inutiles puisqu'on s'insère dans un objet ville qui les porte déjà)
         $voie = array_diff_key($voie, $filtre);
@@ -107,7 +118,7 @@ foreach (glob(FANTOIR.EXT) as $filename) {
         $villes2[$ville_id][] = $voie;
 
         // donner une idée de l'avancement pendant la lecture
-        if ($i>=1000) {
+        if ($i >= 1000) {
             echo '.';
             $i=0;
         }
@@ -145,21 +156,17 @@ function checkVille($voie) {
     $insee = $voie['cdep'] . $voie['ccom'];
 
     if (!array_key_exists($insee, $villes)) {
-
         $villes[$insee] = array(
-            'departement' => $voie['cdep'],
-            'direction' => $voie['cdir'],
-            'code' => $voie['ccom'],
-            'insee' => $insee,
-           // 'voies' => array()
+            'code' => ['FR' . $insee],
         );
 
         if (isset($communes[$insee])) {
-            $villes[$insee]['label'] = utf8_encode($communes[$insee]['label']);
-            $villes[$insee]['creation'] = new MongoDate(strtotime($communes[$insee]['creation']));
-            $villes[$insee]['suppression'] = new MongoDate(strtotime(str_replace('9999','2199', $communes[$insee]['suppression'])));
-            $villes[$insee]['codepostal'] = $communes[$insee]['codepostal'];
-            $villes[$insee]['departement'] = $communes[$insee]['departement'];
+            $villes[$insee]['label'] = [['k' => '__', 'v' => utf8_encode($communes[$insee]['label'])]];
+            $villes[$insee]['fromdate'] = new \MongoDate(strtotime($communes[$insee]['creation']));
+            $villes[$insee]['todate'] = new \MongoDate(strtotime(str_replace('9999','2199', $communes[$insee]['suppression'])));
+            $villes[$insee]['postcode'] = [$communes[$insee]['codepostal']];
+            $villes[$insee]['county'] = $communes[$insee]['departement'];
+            $villes[$insee]['country'] = ['code' => ['@fr','FR'], '$ref' => 'country', '$id' => mkMongoId('FR',true)];
         }
     }
     return $insee;
@@ -167,37 +174,56 @@ function checkVille($voie) {
 
 // insérer un document ville contenant un tableau voies
 function insertion() {
-    global $villes;
-    global $ville_id;
-    global $villes2;
-    global $MONGOPT;
+    global $villes, $ville_id, $villes2, $geo;
+    
 
     $start = microtime(true);
     echo RN.'Pushing data to Mongo... ';
 
     // connexion à MongoDB et sélection de la base/collection
     // connexion persistante par défaut, pas besoin de vérifier si elle existe déjà
-    $m = new MongoClient(MONGO/*, $MONGOPT*/);
-    $db = $m->fantoir;
-    $collection = $db->communes;
-    $collection2 = $db->voies;
+    $m = new \MongoClient(MONGOHOST);
+    $db = $m->{MONGODB};
+    $collection = $db->city;
+    $collection2 = $db->road;
 
     foreach ($villes as $ville) {
+    	$insee = substr($ville['code'][0],2);
         // on génère un MongoId manuellement pour éviter tout risque de doublon
-        $ville['_id'] = new MongoId();
-        printf("Insertion de la ville %s\n", $ville['label']);
-        $collection->insert($ville);
+        $ville['_id'] = mkMongoId($ville['code'][0]);
+        $ville['source'] = ['quatrain','fantoir','osm'];
+        $ville['creation'] = new \MongoDate();
         
-        $voies = $villes2[$ville['insee']];
+        if (isset($geo[$insee])) {
+        	$geodata = $geo[$insee];
+        	$ville['location'] = ['type' => 'Point', 'coordinates' => [(float) $geodata[5], (float) $geodata[4]]];
+        	$ville['area'] = (int) ($geodata[3] / 1000000);
+        	$ville['population'] = (int) ($geodata[10] * 1000);
+        	//$data['bbox'] = [(float) $geodata[3], (float) $geodata[4], (float) $geodata[5], (float) $geodata[6]];
+        }
+        
+        printf("Insertion de la ville %s\n", $ville['label'][0]['v']);
+        $collection->update(['_id' => $ville['_id']], $ville, ['upsert' => true]);
+        
+        $voies = $villes2[$insee];
 
-        printf("Insertion de %s voies de la ville %s\n", count($voies), $ville['label']);
+        printf("Insertion de %s voies de la ville %s\n", count($voies), $ville['label'][0]['v']);
         foreach ($voies as $voie) {
-        	$voie['_commune'] = $ville['_id'];
-        	$collection2->insert($voie);
+        	unset($voie['idvoie']);
+        	unset($voie['cleriv']);
+        	$voie['label'] = [['k' => '__', 'v' => $voie['label']]];
+        	$voie['source'] = ['fantoir'];
+        	$voie['creation'] = new \MongoDate();
+        	$voie['city'] = array('code' => $ville['code'], '$ref' => 'city', '$id' => mkMongoId($ville['code'][0],true));
+        	$voie['country'] = ['code' => ['@fr','FR'], '$ref' => 'country', '$id' => mkMongoId('FR',true)];
+        	$voie['_id'] = mkMongoId($voie['code'][0]);
+        	 
+        	$collection2->update(['_id' => $voie['_id']], $voie, ['upsert' => true]);
         }
     }
     echo 'took '.timing($start).'s';
 }
+
 
 function getCities() {
     $start = microtime(true);
@@ -218,6 +244,5 @@ function getCities() {
     $mysqli->close();
 
     echo 'Fetching the cities database took '.timing($start).'s'.RN;
-
     return $villes;
 }

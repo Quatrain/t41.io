@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<module id="wa" vendor="t41">
+			<version>0.1.0</version>
+			<enabled>true</enabled>
+			<label>World Address</label>
+			<description></description>
+			<namespace>t41\Wa</namespace>
+			<controller>
+				<base>wa</base>
+				<label>World Address</label>
+				<help></help>
+				<items>
+					<item id="address">
+						<label>World Addresses</label>
+						<nolink/>
+						<acl>
+							<svs/>
+						</acl>
+						<items>
+							<item id="address/create">
+								<label>New World Address</label>
+								<acl>
+									<svs_admin/>
+                                    <root/>
+								</acl>
+							</item>
+							<item id="address/find">
+								<label>Find Address</label>
+								<acl>
+									<svs/>
+								</acl>
+							</item>
+						</items>
+					</item>
+				</items>
+			</controller>
+			<parameters>
+			</parameters>
+		</module>
+	</modules>
+</config>

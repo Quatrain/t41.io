@@ -7,9 +7,10 @@
 				<property id="code" type="array">
 					<label>Code</label>
 				</property>
-				<property id="label" type="array">
+				<property id="label" type="string">
 					<label>Nom</label>
 					<constraints>
+						<multilingual/>
 						<mandatory/>
 						<protected/>
 					</constraints>
@@ -40,6 +41,7 @@
 				<property id="label" type="string">
 					<label>Nom</label>
 					<constraints>
+						<multilingual/>
 						<mandatory/>
 						<protected/>
 					</constraints>
@@ -93,6 +95,7 @@
 				<property id="label" type="string">
 					<label>Nom</label>
 					<constraints>
+						<multilingual/>
 						<mandatory/>
 						<protected/>
 					</constraints>
@@ -129,6 +132,7 @@
 				<property id="label" type="string">
 					<label>Voie</label>
 					<constraints>
+						<multilingual/>
 						<mandatory/>
 						<protected/>
 					</constraints>
