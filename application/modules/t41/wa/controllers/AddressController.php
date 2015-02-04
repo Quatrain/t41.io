@@ -23,16 +23,19 @@ class Wa_AddressController extends Maell_DefaultController {
 		die; */
 		
 		View::addVendorLib('components/jquery/jquery.min.js');
+		View::addCoreLib('object.js');
 		View::addModuleLib('address.js', $this->_module);
 		View::addEvent('address = new wa.address(); address.init()', 'js');
 		
 		$address = new Address();
 		
-		$form = new FormComponent($address, ['display' => ['plot','road','city','country']]);
+		$form = new FormComponent($address, ['display' => ['plot','road','postcode','city','country']]);
 		$form->setTitle("New Address");
+
+		$form->getElement('city')->setDecorator('autocomplete')->setDecoratorParams(array('retprops' => 'label,postcode'));
+				
 		
 		$form->getElement('country')->getCollection()->setParameter('altkey', 'code.1');
-		//Zend_Debug::dump($form->getElement('country')->getCollection()->getParameters()); die;
 		
 		
 		$form->register();

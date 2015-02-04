@@ -11,6 +11,8 @@ window.wa.address = function(obj) {
         
         
         this.init = function(communes) {
+        	
+        	// deplacement postcode
             jQuery('#road').on('change', jQuery.proxy(this, 'switchRoad'));
             jQuery('#city').on('change', jQuery.proxy(this, 'switchCity'));
             jQuery('#country').on('change', jQuery.proxy(this, 'switchCountry'));
@@ -58,12 +60,28 @@ window.wa.address = function(obj) {
         
         this.parsePlots = function(data) {
         	jQuery('#_plot').hide();
-        	var sel = jQuery('<select>');
+        	jQuery('#plot').remove();
+        	var sel = jQuery('<select id="plot" name="plot">');
         	for (var key in data.data) {
         	    sel.append(jQuery('<option>').attr('value', key).text(data.data[key]['number']));
         	}
     	    sel.append(jQuery('<option>').attr('value', 'missing').text("Autre numéro"));        	
         	jQuery('#elem_plot').append(sel);
+        };
+        
+
+        this.parsePostcodes = function() {
+        	jQuery('#label_postcode,#elem_postcode').remove();
+        	var obj = maell.object.factory(maell.view.get('_city').currentSuggestions[maell.view.get('_city').currentId]);
+        	var sel = jQuery('<select id="postcode" name="postcode">');
+        	var postcodes = obj.get('postcode');
+        	if (postcodes.length > 1) {
+        	    sel.append(jQuery('<option>').attr('value', '').text('--'));
+        	}
+        	for (var key in postcodes) {
+        	    sel.append(jQuery('<option>').attr('value', postcodes[key]).text(postcodes[key]));
+        	}
+        	jQuery('#elem_city').prepend(sel);
         };
         
         
@@ -72,7 +90,8 @@ window.wa.address = function(obj) {
         		this.showHideRow('road,plot','hide');
         		jQuery('#_city').focus();
         	} else {
-        		this.showHideRow('road','show');
+        		this.parsePostcodes(obj);
+        		this.showHideRow('postcode,road','show');
         		jQuery('#_road').focus();
         	}
         };
@@ -80,7 +99,7 @@ window.wa.address = function(obj) {
         
         this.switchCountry = function(obj) {
         	if (! obj || obj.currentTarget.value == '_NONE_') {
-        		this.showHideRow('city,road,plot','hide');
+        		this.showHideRow('postcode,city,road,plot','hide');
         		jQuery('#_country').focus();
         	} else {
         		this.showHideRow('city','show');
