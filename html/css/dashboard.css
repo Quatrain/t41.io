@@ -10,16 +10,16 @@ html {
 
 }
 
-body div.block {
+body.t41io div.block {
 	width: 100%;
 	padding: 30px 0px 60px 0px;
 }
 
-div.block h2 {
+body.t41io div.block h2 {
 	color: #79bde0;
 }
 
-body div.block.even {
+body.t41io div.block.even {
 	background-color: #79bde0;
 }
 
@@ -27,13 +27,35 @@ body div.block.even h2 {
 	color: #ffffff;
 }
 
-body {
+body.t41io {
 	margin: 0 auto;
 	font-family: 'Exo 2', sans-serif;
 	font-weight: 300;
 	letter-spacing: 1px;
 	color: #444;
 	text-align: center;
+}
+
+body.t41io .maell.menu.panel {
+	display: none;
+}
+
+body.t41io .maell.menu.panel ul li a {
+	font-family: 'Exo 2', sans-serif;
+	color: #444444;
+}
+
+body.t41io .maell.menu.panel ul li a:hover {
+	color: #000000;
+	border-bottom: 2px solid #79bde0;
+}
+
+body.t41io #menutogglecontrol {
+	font-family: 'Exo 2', sans-serif;
+	padding: 3px 8px;
+	font-size: 20px;
+	left: 20px;
+	top: 15px;
 }
 
 span.logo-titre {
@@ -95,7 +117,7 @@ h2 span {
 /*	color: #cee2ef;
 */}
 
-p {
+body.t41io p {
 	max-width: 760px;
 	margin: 0 auto;
 	font-size: 16px;

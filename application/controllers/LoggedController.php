@@ -36,7 +36,7 @@ class LoggedController extends Maell_CrudController {
 		
 		// inject in a view object
 		$menu = new View\MenuComponent();
-		$menu->setMenu($defaultMenu);
+		$menu->setMenu($defaultMenu)->setDecorator('Toggle');
 		//$menu->setRole($this->_session->role);
 
 		$menu->getMenu();

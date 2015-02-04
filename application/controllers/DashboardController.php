@@ -22,7 +22,6 @@ class DashboardController extends LoggedController {
 	 */
 	public function indexAction()
 	{
-
 		View::setTemplate('dashboard.tpl.html');
 	}
 } 
