@@ -21,7 +21,7 @@
 						<hostname id="1">io.dev.gnax</hostname>
 					</hostname>
 					<lazy>false</lazy>
-					<debug>true</debug>
+					<debug>false</debug>
 					<log>true</log>
 					<cli>true</cli>
 					<cache_backend>File</cache_backend>

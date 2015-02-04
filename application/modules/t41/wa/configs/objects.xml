@@ -34,10 +34,20 @@
 						<protected/>
 					</constraints>
 				</property>
+				<property id="postcode" type="string">
+					<label>PostCode</label>
+					<constraints>
+						<mandatory/>
+						<protected/>
+						<constraints>
+							<maxlength>6</maxlength>
+						</constraints>
+					</constraints>
+				</property>
 				<property id="city" type="object">
 					<label>City</label>
 					<instanceof>t41\IO\City</instanceof>
-					<display>postcode,label</display>
+					<display>label</display>
 					<search>label</search>
 					<searchmode>equals</searchmode>
 				</property>
