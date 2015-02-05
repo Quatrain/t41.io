@@ -33,6 +33,9 @@
 				<property id="languages" type="array">
 					<label>Language</label>
 				</property>
+				<property id="bbox" type="array">
+					<label>Bounding Box</label>
+				</property>
 			</properties>
 		</object>
 		<object id="t41\IO\City" backend="mongo">

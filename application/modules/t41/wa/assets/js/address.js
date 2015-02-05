@@ -104,6 +104,10 @@ window.wa.address = function(obj) {
         	} else {
         		this.showHideRow('city','show');
         		jQuery('#_city').focus();
+            	var obj = maell.object.factory(maell.view.get('_country').currentSuggestions[maell.view.get('_country').currentId]);
+        		if (obj.get('bbox')) {
+        			angular.element($('qt-map')).scope().boundingBox(obj.get('bbox'));
+        		}
         	}
         };
         
