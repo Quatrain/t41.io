@@ -4,6 +4,8 @@ use maell\View;
 use t41\Wa\Address;
 use Maell\View\FormComponent;
 use Maell\Backend;
+use Maell\Core\Api;
+
 /**
  * IndexController
  * 
@@ -26,6 +28,12 @@ class DashboardController extends LoggedController {
 	{
 		$this->_addMapLibs();
 		$this->_addForm();
+
+		Api::init();
+        $apiconfig = Api::getConfig();
+        
+        View::addEvent("angular.element($('qt-api-doc')).scope().setApiConfig(".json_encode($apiconfig).");", 'js');
+
 		View::setTemplate('dashboard.tpl.html');
 	}
 

@@ -31,6 +31,11 @@ body div.block.even h2 {
 	color: #ffffff;
 }
 
+#map {
+	height: 500px;
+	padding: 0;
+}
+
 body.t41io {
 	margin: 0 auto;
 	font-family: 'Exo 2', sans-serif;
@@ -115,7 +120,7 @@ body.t41io #form.block .maell.component form fieldset div.field input {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
-	border: 1px solid #fff;
+	border: 1px solid #cf547b;
 	height: auto;
 	width: 320px;
 	padding: 3px 7px;
@@ -140,6 +145,121 @@ body.t41io #form.block .maell.component form fieldset div.field span {
 	font-weight: 300;
 	color: #000;
 }
+
+/** API documentation **/
+
+/** API **/
+#apidocumentation {
+  width: 100%;
+  margin: 0 auto;
+}
+div.api.endpoint {
+  width: 100%;
+  margin: 0px;
+  background-color: #ffffff;
+  margin-bottom: 50px;
+}
+
+div.api.endpoint div.left {
+  float: left;
+  width: 40%;
+}
+
+div.api.endpoint div.right {
+  float: right;
+  width: 58%;
+}
+
+div.api.endpoint h3.title {
+  border-bottom: none;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #fff;
+  padding: 4px;
+  font-size: 1.6em;
+  text-align: left;
+  background-color: #79bde0;
+}
+
+div.api.endpoint h3.title em {
+  font-style: normal;
+  color: #444;
+}
+
+div.api.endpoint div.fields,
+div.api.endpoint div.extended {
+  background-color: #ffffff;
+}
+
+div.api.endpoint div.extended {
+  padding: 4px;
+}
+
+div.api.endpoint div ul {
+  text-align: left;
+}
+
+div.api.endpoint div ul li {
+  padding: 1px;
+  font-size: 16px;
+}
+
+div.api.endpoint div ul li.field label.fieldkey {
+  width: 40%;
+  display: inline-block;
+  text-align: right;
+  color: #000000;
+}
+
+div.api.endpoint div ul li.field input.fieldvalue {
+  width: 50%;
+  text-align: left;
+  margin-left: 25px;
+  color: #4C8AAA;
+  border: 1px solid silver;
+  font-family: 'Exo 2', sans-serif;
+}
+
+div.api.endpoint div.response {
+  background-color: #ffffff;
+  padding: 4px;
+  text-align: left;
+}
+
+div.api.endpoint span.title {
+  margin-left: 30px;
+  display: block;
+  text-align: left;
+}
+
+div.api.endpoint div.description {
+  padding: 0 20px 6px 0;
+  color: black;
+  text-align: left;
+  background-color: #79bde0;
+}
+
+div.api.endpoint div.response pre {
+  color: #fff;
+  background-color: #79bde0;
+  margin: 0px;
+  padding: 4px;
+  font-size: 0.8em;
+}
+
+div.api.endpoint div.url {
+  font-size: 0.8em;
+  white-space: pre-line;
+  padding: 4px;
+}
+
+div.api.endpoint div.url strong {
+  color: #000;
+  padding-left: 2px;
+  font-size: 0.9em;
+}
+
+/********/
 
 span.logo-titre {
 	font-family: 'Exo 2', sans-serif;

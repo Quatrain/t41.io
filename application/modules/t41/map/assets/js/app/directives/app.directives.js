@@ -74,11 +74,59 @@ angular.module('mapocDirectives').directive('qtInfoControl', qtInfoControl);
 var qtApiDoc = function() {
 	return {
 		restrict: 'E',
-		template: '<h2>Documentation</h2><div ng-repeat="(key, api) in apiconfig"><h3>/{{api.endpoint}}/{{key}}</h3><span>{{api.description}}</span></div>'
+		//templateUrl: 'app/views/apidoc.tmpl.html'
+		template: '<h2>Documentation</h2><div id="apidocumentation"><qt-api-doc-block ng-repeat="(key, api) in apiconfig"></qt-api-doc-block><div class="clear"></div></div>'
 	};
 };
 angular.module('mapocDirectives').directive('qtApiDoc', qtApiDoc);
 
 
+
+var qtApiDocBlock = function() {
+	return {
+		restrict: 'E',
+		//templateUrl: 'app/views/apidocblock.tmpl.html'
+		template: '<div class="api endpoint" ng-show="api.enabled">'
++'	<h3 class="title">{{baseUrl}}{{api.endpoint}}<em>/{{key}}</em></h3>'
++'			<div class="description">{{api.label}}: {{api.description}}</div>'
++'	<div class="left">'
++'		<div class="fields">'
++'			<span class="title">Required parameters</span>'
++'			<span ng-repeat="(mkey, method) in api.methods">'
++'				<ul>'
++'					<li ng-repeat="(pkey, param) in method.apiparameters" class="field">'
++'						<label title="{{param.description}}" for="{{key+pkey}}" class="fieldkey">{{pkey}}</label>'
++'						<input id="{{key+pkey}}" type="text" class="fieldvalue" ng-model="param.value" ng-class="{mandatory: param.constraints.mandatory}" />'
++'					</li>'
++'					<li class="field">'
++'						<label class="fieldkey">token</label>'
++'						<input type="text" class="fieldvalue" ng-model="apitoken" />'
++'					</li>'
++'					<li class="field">'
++'						<label class="fieldkey" for="{{key}}ext">ext</label>'
++'						<input type="checkbox" class="" ng-model="api.ext" id="{{key}}ext" />'
++'					</li>'
++'					<li class="field">'
++'						<label class="fieldkey"></label>'
++'						<button ng-click="apiCall(key)">Send</button>'
++'						<div class="url">'
++'							{{baseUrl}}{{api.endpoint}}<strong>/{{key}}</strong><br/><strong>?token</strong>={{apitoken}}<span ng-repeat="(pkey, param) in method.apiparameters" ng-hide="param.value == null"><br/><strong>&amp;{{pkey}}</strong>={{param.value}}</span><span ng-show="api.ext"><br/><strong>&amp;ext</strong>=1</span>'
++'						</div>'
++'					</li>'
++'				</ul>'
++'			</span>'
++'			'
++'		</div>'
++'	</div>'
++'	<div class="right">'
++'		<div class="response">'
++'			<pre>{{api.response || "Waiting for API call"}}</pre>'
++'		</div>'
++'	</div>'
++'	<div class="clear"></div>'
++'</div>'
+	};
+};
+angular.module('mapocDirectives').directive('qtApiDocBlock', qtApiDocBlock);
 
 }());

@@ -1,6 +1,6 @@
 (function() {
 
-var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletData, leafletMarkersHelpers, geoFactory) {
+var MapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletData, leafletMarkersHelpers, geoFactory) {
 
 
     angular.extend($scope, {
@@ -567,8 +567,8 @@ var mapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
     
 };
 
-mapController.$inject = ['$scope', 'Nominatim', 'GeoJSONLayers', 't41io', 'leafletData', 'leafletMarkersHelpers', 'geoFactory'];
+MapController.$inject = ['$scope', 'Nominatim', 'GeoJSONLayers', 't41io', 'leafletData', 'leafletMarkersHelpers', 'geoFactory'];
 
-angular.module('mapocApp').controller('mapController', mapController);
+angular.module('mapocApp').controller('MapController', MapController);
 
 }());

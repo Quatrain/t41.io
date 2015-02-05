@@ -22,7 +22,7 @@
 	%components:js%
 	%components:css%
 </head>
-<body class="t41io" ng-app="mapocApp">
+<body class="t41io" >
 	%container:menu%
 
 	<div class="block odd">
@@ -34,18 +34,17 @@
 
 	<div class="block even" id="form" style="margin-bottom: 0;">
 		%container:form%
-		<input id="bbox" ng-model="bboxinput" />
 	</div>
 
-	<div class="block odd" id="map" style="padding: 0; height: 500px;" ng-view>
-        
+	<div ng-app="mapocApp">
+		<div class="block odd" id="map" ng-controller="MapController">
+			<qt-map></qt-map>
+		</div>
+		<div class="block even" id="apidoc" ng-controller="ApiController">
+			<qt-api-doc></qt-api-doc>
+		</div>
 	</div>
-	
-	<div class="block even">
-		<h2>Documentation <span>technique</span></h2>
-		<p>Pellentesque tortor lorem, convallis id tristique non, placerat et tortor. Curabitur sit amet facilisis eliquam dolor odio, pulvinar non sem eu.</p>
-		<a id="doc" href="#">Accès à la documentation <img src="/img/external.png"></a>
-	</div>
+
 	
 	<div class="block odd">
 		<h2>Contactez<span>-nous</span></h2>
