@@ -2,27 +2,19 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8"/>
-
 	<title>t41.io</title>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
 	<meta itemprop="description" content="t41.io"/>
-
 	<link rel="icon" type="image/png" href="img/favicon.png"/>
 	<link rel="shortcut icon" href="img/favicon.png"/>
-
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:100,300,400,600' rel='stylesheet' type='text/css'>
-
-<!--  Style  -->
-	<link href="/css/dashboard.css" rel="stylesheet" type="text/css"/>
-
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
-	<!-- <script type="text/javascript">var apiconfig = %env:apiconfig%;</script> -->
+	<link href="/css/dashboard.css" rel="stylesheet" type="text/css"/>
 	%components:js%
 	%components:css%
 </head>
-<body class="t41io" >
+<body class="t41io">
 	%container:menu%
 
 	<div class="block odd">
@@ -32,20 +24,23 @@
 		<p>Pellentesque tortor lorem, convallis id tristique non, placerat et tortor. Curabitur sit amet facilisis elit. Aliquam dolor odio, pulvinar non sem eu, dapibus hendrerit elit. Donec pharetra arcu at convallis bibendum. Nulla facilisi. Mauris dignissim vehicula varius. Pellentesque lacinia, ipsum et ultrices feugiat, magna erat gravida ligula, a scelerisque nunc arcu vel mi.</p>
 	</div>
 
+	<a name="try" />
 	<div class="block even" id="form" style="margin-bottom: 0;">
 		%container:form%
 	</div>
 
 	<div ng-app="mapocApp">
+		<a name="map" />
 		<div class="block odd" id="map" ng-controller="MapController">
 			<qt-map></qt-map>
 		</div>
+		<a name="doc" />
 		<div class="block even" id="apidoc" ng-controller="ApiController">
 			<qt-api-doc></qt-api-doc>
 		</div>
 	</div>
 
-	
+	<a name="contact" />
 	<div class="block odd">
 		<h2>Contactez<span>-nous</span></h2>
 		<form id="contact" method="POST" action="#">

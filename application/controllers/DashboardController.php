@@ -30,9 +30,9 @@ class DashboardController extends LoggedController {
 		$this->_addForm();
 
 		Api::init();
-        $apiconfig = Api::getConfig();
-        
-        View::addEvent("angular.element($('qt-api-doc')).scope().setApiConfig(".json_encode($apiconfig).");", 'js');
+		$apiconfig = Api::getConfig();
+
+		View::addEvent("angular.element($('qt-api-doc')).scope().setApiConfig(".json_encode($apiconfig).");", 'js');
 
 		View::setTemplate('dashboard.tpl.html');
 	}
@@ -57,23 +57,25 @@ class DashboardController extends LoggedController {
 
 	private function _addMapLibs()
 	{
-	    View::addModuleLib(array(
-	    	'leaflet.css',
-    	    'app.css',
-    	    'leaflet.min.js',
-    	    'terraformer.min.js',
-    	    'angular.min.js',
-    	    'angular-route.min.js',
-    	    'app:app.js',
-    	    'app:directives:leaflet.min.js',
-    	    'app:directives:app.filters.js',
-    	    'app:directives:app.directives.js',
-    	    'app:controllers:map.controller.js',
-    	    'app:controllers:api.controller.js',
-    	    'app:services:nominatim.service.js',
-    	    'app:services:t41io.service.js',
-    	    'app:services:geojsonlayers.factory.js',
-    	    'app:services:geofactory.factory.js'
-	    ), 'app/t41/map');
+		View::addModuleLib(array(
+			'leaflet.css',
+			'app.css',
+			'leaflet.min.js',
+			'terraformer.min.js',
+			'angular.min.js',
+			'angular.min.js.map',
+			'angular-route.min.js',
+			'angular-route.min.js.map',
+			'app:app.js',
+			'app:directives:leaflet.min.js',
+			'app:directives:app.filters.js',
+			'app:directives:app.directives.js',
+			'app:controllers:map.controller.js',
+			'app:controllers:api.controller.js',
+			'app:services:nominatim.service.js',
+			'app:services:t41io.service.js',
+			'app:services:geojsonlayers.factory.js',
+			'app:services:geofactory.factory.js'
+		), 'app/t41/map');
 	}
-} 
+}

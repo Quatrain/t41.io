@@ -29,7 +29,11 @@ var ApiController = function($scope, $http, t41io) {
 		},
 		successHandler: function(name, data) {
 			if (data.status=='OK') {
-				$scope.apiconfig[name].response = JSON.stringify(data.data, null, 2);
+				if (document.getElementById(name+'data').checked) {
+					$scope.apiconfig[name].response = JSON.stringify(data.data, null, 2);
+				} else {
+					$scope.apiconfig[name].response = JSON.stringify(data, null, 2);
+				}
 			} else if (data.status=='ERR') {
 				$scope.apiconfig[name].response = 'Error: '+ data.context.msg;
 			}
@@ -42,7 +46,7 @@ var ApiController = function($scope, $http, t41io) {
 
 };
 
-ApiController.$inject = ['$scope', '$http','t41io'];
+ApiController.$inject = ['$scope', '$http', 't41io'];
 
 angular.module('mapocApp').controller('ApiController', ApiController);
 

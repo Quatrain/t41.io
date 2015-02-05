@@ -164,9 +164,9 @@
     // formater les parametres à ajouter à l'url
     this.formatQuery = function(query, params) {
       var result = '?token='+this.token;
-      for (var i = 0; i < query.length; i++) {
+      for (var i in query) {
         if(params.indexOf(i)!='-1') result += '&'+i+'='+query[i];
-      };
+      }
       return result;
     };
   };

@@ -218,11 +218,13 @@ div.api.endpoint div ul li.field input.fieldvalue {
   color: #4C8AAA;
   border: 1px solid silver;
   font-family: 'Exo 2', sans-serif;
+  font-size: 18px;
+  line-height: 18px;
 }
 
 div.api.endpoint div.response {
   background-color: #ffffff;
-  padding: 4px;
+  padding: 0;
   text-align: left;
 }
 
@@ -240,11 +242,13 @@ div.api.endpoint div.description {
 }
 
 div.api.endpoint div.response pre {
-  color: #fff;
-  background-color: #79bde0;
+  color: #444;
+  background-color: #fff;
   margin: 0px;
   padding: 4px;
   font-size: 0.8em;
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
 div.api.endpoint div.url {
