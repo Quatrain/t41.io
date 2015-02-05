@@ -54,6 +54,10 @@ window.wa.address = function(obj) {
         		jQuery.ajax('/api/v1/plots/?_road=' + jQuery('#road').val() + '&token=fa8c9c082de9d2542b993cad0d887d29205d5bd36836a064', {type:'GET', success:jQuery.proxy(this,'parsePlots')})
         		this.showHideRow('plot','show');
         		jQuery('#_plot').focus();
+            	var obj = maell.object.factory(maell.view.get('_road').currentSuggestions[maell.view.get('_road').currentId]);
+        		if (obj.get('bbox')) {
+        			angular.element($('qt-map')).scope().boundingBox(obj.get('bbox'));
+        		}
         	}
         };
         
@@ -93,6 +97,10 @@ window.wa.address = function(obj) {
         		this.parsePostcodes(obj);
         		this.showHideRow('postcode,road','show');
         		jQuery('#_road').focus();
+            	var obj = maell.object.factory(maell.view.get('_city').currentSuggestions[maell.view.get('_city').currentId]);
+        		if (obj.get('bbox')) {
+        			angular.element($('qt-map')).scope().boundingBox(obj.get('bbox'));
+        		}
         	}
         };
         

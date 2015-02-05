@@ -79,6 +79,9 @@
 					<instanceof>t41\IO\Country</instanceof>
 					<display>label</display>
 				</property>
+				<property id="bbox" type="array">
+					<label>Bounding Box</label>
+				</property>
 				<property id="roads" type="collection">
 					<label>Voies</label>
 					<instanceof>t41\IO\Road</instanceof>
@@ -117,6 +120,9 @@
 				</property>
 				<property id="source" type="array">
 					<label>Source</label>
+				</property>
+				<property id="bbox" type="array">
+					<label>Bounding Box</label>
 				</property>
 			</properties>
 		</object>

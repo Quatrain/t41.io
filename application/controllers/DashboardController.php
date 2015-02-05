@@ -48,9 +48,11 @@ class DashboardController extends LoggedController {
 		$form = new FormComponent($address, ['display' => ['plot','road','postcode','city','country']]);
 		$form->setTitle("Essayez l'API");
 
-		$form->getElement('city')->setDecorator('autocomplete')->setDecoratorParams(array('retprops' => 'label,postcode'));
+		$form->getElement('city')->setDecorator('autocomplete')->setDecoratorParams(array('retprops' => 'label,postcode,bbox'));
+		$form->getElement('road')->setDecorator('autocomplete')->setDecoratorParams(array('retprops' => 'type,label,bbox'));
 		
 		$form->getElement('country')->getCollection()->setParameter('altkey', 'code.1');
+		$form->getElement('country')->setDecorator('autocomplete')->setDecoratorParams(array('retprops' => 'label,bbox'));
 		
 		$form->register('form');
 	}
