@@ -10,6 +10,10 @@ html {
 
 }
 
+body.t41io ul li:hover {
+	background-color: inherit;
+}
+
 body.t41io div.block {
 	width: 100%;
 	padding: 30px 0px 60px 0px;
@@ -56,6 +60,85 @@ body.t41io #menutogglecontrol {
 	font-size: 20px;
 	left: 20px;
 	top: 15px;
+}
+
+body.t41io #form.block .maell.component {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+body.t41io #form.block {
+	padding: 10px;
+}
+
+body.t41io #form.block .maell.component {
+	max-width: 800px;
+	margin: 10px auto;
+}
+
+body.t41io #form.block .maell.component h4.title {
+	font-size: 45px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-family: 'Exo 2', sans-serif;
+	font-weight: 100;
+	border: none;
+	margin-bottom: 15px;
+	cursor: normal;
+	color: #fff;
+}
+
+body.t41io #form.block .maell.component h4.title:hover {
+	color: #fff;
+	cursor: normal;
+}
+
+body.t41io #form.block .maell.component form legend,
+body.t41io #form.block .maell.component form fieldset.maell.form_actions {
+	display: none;
+}
+
+body.t41io #form.block .maell.component fieldset {
+	border: none;
+	text-align: left;
+}
+
+body.t41io #form.block .maell.component fieldset div.label label {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 25px;
+	font-family: 'Exo 2', sans-serif;
+}
+
+body.t41io #form.block .maell.component form fieldset div.field input {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	border: 1px solid #fff;
+	height: auto;
+	width: 320px;
+	padding: 3px 7px;
+	margin: auto;
+	line-height: 25px;
+	font-family: 'Exo 2', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	color: #000;
+	background: #eee;
+	transition: .2s all linear;
+}
+
+body.t41io #form.block .maell.component form fieldset div.field span {
+	height: auto;
+	width: 320px;
+	padding: 2px;
+	margin: auto;
+	line-height: 25px;
+	font-family: 'Exo 2', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	color: #000;
 }
 
 span.logo-titre {

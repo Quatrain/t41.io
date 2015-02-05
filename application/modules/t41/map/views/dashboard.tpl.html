@@ -22,7 +22,6 @@
 	%components:js%
 	%components:css%
 </head>
-
 <body class="t41io" ng-app="mapocApp">
 	%container:menu%
 
@@ -33,12 +32,12 @@
 		<p>Pellentesque tortor lorem, convallis id tristique non, placerat et tortor. Curabitur sit amet facilisis elit. Aliquam dolor odio, pulvinar non sem eu, dapibus hendrerit elit. Donec pharetra arcu at convallis bibendum. Nulla facilisi. Mauris dignissim vehicula varius. Pellentesque lacinia, ipsum et ultrices feugiat, magna erat gravida ligula, a scelerisque nunc arcu vel mi.</p>
 	</div>
 
-	<div class="block even" id="cle" style="margin-bottom: 0;">
-		<button>Demander une clé</button>
-		<div>5233-5623-5623-9856</div>
+	<div class="block even" id="form" style="margin-bottom: 0;">
+		%container:form%
+		<input id="bbox" ng-model="bboxinput" />
 	</div>
 
-	<div class="block odd" style="padding: 0; height: 500px;" ng-view>
+	<div class="block odd" id="map" style="padding: 0; height: 500px;" ng-view>
         
 	</div>
 	
