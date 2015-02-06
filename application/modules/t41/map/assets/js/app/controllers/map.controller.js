@@ -134,6 +134,16 @@ var MapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
         });
     };
 
+    $scope.panTo = function(point, zoom) {
+      var map = this.getMap();
+
+      map.then(function(map) {
+        var z = zoom || map.getZoom();
+        map.panTo(point);
+        map.setZoom(z);
+      });
+    }
+
     $scope.boundToBbox = function(bbox) {
       if (bbox) $scope.bbox = bbox;
       var map = this.getMap();
