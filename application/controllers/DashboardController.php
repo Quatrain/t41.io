@@ -39,7 +39,6 @@ class DashboardController extends LoggedController {
 
 	private function _addForm()
 	{
-		View::addVendorLib('components/jquery/jquery.min.js');
 		View::addModuleLib('address.js', 'app/t41/wa');
 		View::addEvent('address = new wa.address(); address.init()', 'js');
 		
