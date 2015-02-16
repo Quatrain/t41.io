@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<module id="documentation" vendor="t41">
+			<version>0.1.0</version>
+			<enabled>true</enabled>
+			<label>Documentation</label>
+			<description></description>
+			<namespace>t41\Doc</namespace>
+			<controller>
+				<base>doc</base>
+				<label>Documentation</label>
+				<help></help>
+				<items>
+							<item id="api">
+								<label>API</label>
+								<acl>
+									<anon/>
+									<admin/>
+                        			<root/>
+								</acl>
+							</item>
+							<item id="faq">
+								<label>FAQ</label>
+								<acl>
+									<anon/>
+									<admin/>
+                        			<root/>
+								</acl>
+							</item>
+				</items>
+			</controller>
+			<parameters>
+			</parameters>
+		</module>
+	</modules>
+</config>
