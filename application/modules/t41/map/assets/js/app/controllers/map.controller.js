@@ -142,7 +142,7 @@ var MapController = function($scope, Nominatim, GeoJSONLayers, t41io, leafletDat
         map.panTo(point);
         map.setZoom(z);
       });
-    }
+    };
 
     $scope.boundToBbox = function(bbox) {
       if (bbox) $scope.bbox = bbox;

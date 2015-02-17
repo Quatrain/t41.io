@@ -4,7 +4,7 @@
     	<backend alias="mongo">
 			<uri>
 				<adapter>mongo</adapter>
-				<host>127.0.0.1</host>
+				<host>beta.t41.io</host>
                 <url>t41</url>
                 <port>27017</port>
 <!--                 <params>

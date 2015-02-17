@@ -26,18 +26,13 @@ class DashboardController extends LoggedController {
 	 */
 	public function indexAction()
 	{
-		$this->_addMapLibs();
+		$this->_addAppLibs();
 		$this->_addForm();
-
-		Api::init();
-		$apiconfig = Api::getConfig();
-
-		View::addEvent("angular.element($('qt-api-doc')).scope().setApiConfig(".json_encode($apiconfig).");", 'js');
-
+		
 		View::setTemplate('dashboard.tpl.html');
 	}
 
-	private function _addForm()
+	protected function _addForm()
 	{
 		View::addModuleLib('address.js', 'app/t41/wa');
 		View::addEvent('address = new wa.address(); address.init()', 'js');
@@ -56,7 +51,7 @@ class DashboardController extends LoggedController {
 		$form->register('form');
 	}
 
-	private function _addMapLibs()
+	protected function _addAppLibs()
 	{
 		View::addModuleLib(array(
 			'leaflet.css',
