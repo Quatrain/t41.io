@@ -2,6 +2,7 @@
 
 use maell\View;
 use t41\Wa\Address;
+use t41\IO\Apiaccess;
 use Maell\View\FormComponent;
 use Maell\Backend;
 use Maell\Core\Api;
@@ -28,6 +29,10 @@ class DashboardController extends LoggedController {
 	{
 		$this->_addAppLibs();
 		$this->_addForm();
+
+		$apiaccess = new Apiaccess();
+		$form = new FormComponent($apiaccess, ['display' => ['nom','societe','email']]);
+		$form->setTitle('DEMANDE D\'ACCÈS À L\'API')->register('accessform');
 		
 		View::setTemplate('dashboard.tpl.html');
 	}
@@ -48,7 +53,7 @@ class DashboardController extends LoggedController {
 		$form->getElement('country')->getCollection()->setParameter('altkey', 'code.1');
 		$form->getElement('country')->setDecorator('autocomplete')->setDecoratorParams(array('retprops' => 'label,bbox'));
 		
-		$form->register('form');
+		$form->register('apitryform');
 	}
 
 	protected function _addAppLibs()

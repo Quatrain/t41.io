@@ -67,22 +67,22 @@ body.t41io #menutogglecontrol {
 	z-index: 1110;
 }
 
-body.t41io #form.block .maell.component {
+body.t41io .form.block .maell.component {
 	background-color: transparent;
 	border: none;
 	box-shadow: none;
 }
 
-body.t41io #form.block {
+body.t41io .form.block {
 	padding: 10px;
 }
 
-body.t41io #form.block .maell.component {
+body.t41io .form.block .maell.component {
 	max-width: 800px;
 	margin: 10px auto;
 }
 
-body.t41io #form.block .maell.component h4.title {
+body.t41io .form.block .maell.component h4.title {
 	font-size: 45px;
 	letter-spacing: 5px;
 	text-transform: uppercase;
@@ -90,33 +90,35 @@ body.t41io #form.block .maell.component h4.title {
 	font-weight: 100;
 	border: none;
 	margin-bottom: 15px;
-	cursor: normal;
+	cursor: text;
+}
+
+body.t41io .form.block.even .maell.component h4.title {
 	color: #fff;
 }
 
-body.t41io #form.block .maell.component h4.title:hover {
-	color: #fff;
-	cursor: normal;
+body.t41io .form.block.odd .maell.component h4.title {
+	color: #79bde0;
 }
 
-body.t41io #form.block .maell.component form legend,
-body.t41io #form.block .maell.component form fieldset.maell.form_actions {
+body.t41io #apitry.form.block .maell.component form legend,
+body.t41io #apitry.form.block .maell.component form fieldset.maell.form_actions {
 	display: none;
 }
 
-body.t41io #form.block .maell.component fieldset {
+body.t41io .form.block .maell.component fieldset {
 	border: none;
 	text-align: left;
 }
 
-body.t41io #form.block .maell.component fieldset div.label label {
+body.t41io .form.block .maell.component fieldset div.label label {
 	font-size: 20px;
 	font-weight: 300;
 	line-height: 25px;
 	font-family: 'Exo 2', sans-serif;
 }
 
-body.t41io #form.block .maell.component form fieldset div.field input {
+body.t41io .form.block .maell.component form fieldset div.field input {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
@@ -134,7 +136,7 @@ body.t41io #form.block .maell.component form fieldset div.field input {
 	transition: .2s all linear;
 }
 
-body.t41io #form.block .maell.component form fieldset div.field span {
+body.t41io .form.block .maell.component form fieldset div.field span {
 	height: auto;
 	width: 320px;
 	padding: 2px;

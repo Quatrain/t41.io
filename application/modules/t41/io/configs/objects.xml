@@ -253,6 +253,26 @@
 			</properties>
 		</object>
 		
+		<object id="t41\IO\Apiaccess">
+			<properties>
+				<property id="nom" type="string">
+					<label>Nom et Prénom</label>
+				</property>
+				<property id="societe" type="string">
+					<label>Organisme / Société</label>
+				</property>
+				<property id="email" type="string">
+					<label>Adresse e-mail</label>
+				</property>
+				<property id="date" type="date">
+					<label>Date</label>
+				</property>
+				<property id="key" type="string">
+					<label>Clé API</label>
+				</property>
+			</properties>
+		</object>
+
 		<object id="t41\IO\User\Location">
 			<properties>
 				<property id="auto" type="array">
